@@ -53,6 +53,8 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -60,3 +62,24 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Origin
+
+# Use refile to bundle images
+gem 'refile', require: "refile/rails", github: 'manfe/refile'
+gem 'refile-mini_magick'
+
+# Use bootstrap to adapt grid design system
+gem 'bootstrap-sass'
+
+# bootstrap theme
+gem 'honoka-rails'
+
+# Use jquery to bundle JS
+gem 'jquery-rails'
+
+# Use devise to customize authenticate functions
+gem 'devise'
+
+# Use shortener to generate shorten URL
+gem 'shortener'
