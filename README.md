@@ -1,24 +1,31 @@
-# README
+# Phrase.lib（仮称）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ワンフレーズに限定した文章投稿兼学習用メモサイト
 
-Things you may want to cover:
+### サイトテーマ
+- SNSモードとメモモードの二つのモードを切り替えができるようなサイト
+    - SNSモード
+        - 映画や本などで印象に残ったフレーズ出典付きで投稿し、他のユーザーと共有するモード
+    - メモモード
+        - 学習中に自分にとってわかりやすかったフレーズを記録し、復習に役立てるモード
 
-* Ruby version
+### テーマを選んだ理由
+- 利用目的面
+    - SNS等で文章の一部のみを切り抜いて呟いているユーザーも多く、出典や前後の文脈がわかりにくいことがあるため、その辺りも共有しやすくなれば良いと感じたため。
+    - 概念の復習をするときに、自分にハマったフレーズのみを見れば、全体を思い出す時が多々あったため、効率的に学習できるように思ったため。
+- 技術面
+    - 基本的な機能については、時間をかけずに実装できるため、応用的な機能に多く時間をかけることができると判断したため。
+- 商用面
+    - サービスとして運用することを考えたときに、アフィリエイト等を適応しやすく、また、短縮urlを利用し他のSNSで共有しやすくしたり、個人のためのモードを作ったりすることで、サイト自体の利用者は少なくても利用するインセンティブを維持できるようにしたかったから。
 
-* System dependencies
+### ターゲットユーザ
+TwitterなどのSNS利用者又は学生など 
 
-* Configuration
+### 主な利用シーン
+SNS投稿時、学習
 
-* Database creation
+## 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1qbkSTwjBefvaDT2_Aw6C--9j33bxYrncGzIgMh16RJ0/edit?usp=sharing
