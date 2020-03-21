@@ -83,3 +83,5 @@ gem 'devise'
 
 # Use shortener to generate shorten URL
 gem 'shortener'
+
+gem 'pry-byebug'
