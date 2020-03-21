@@ -1,0 +1,32 @@
+<div class="row">
+    <%= render("/layouts/sidebar") %>
+
+    <div class="col-xs-10">
+        <% @posts.each do |post| %>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <%= attachment_image_tag(post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive") %>
+                            <%= post.user.name %>
+                        </div>
+                        <div class="panel-body">
+                            <h3><%= post.phrase %></h3>
+                        </div>
+                        <div class="panel-footer">
+                            <% if book.favorited_by?(current_user) %>
+                                <%= link_to("/posts/#{post.id}/favorite", method: :delete, remote: true) do %>
+                                    <span class="fas fa-thumbs-up"></span><%= book.favorites.count%>
+                                <% end %>
+                            <% else %>
+                                <%= link_to("/posts/#{post.id}/favorite", method: :post, remote: true) do %>
+                                    <span class="far fa-thumbs-up"></span><%= book.favorites.count %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
