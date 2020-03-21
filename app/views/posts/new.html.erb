@@ -1,0 +1,36 @@
+<h2>投稿する</h2>
+
+<div class="row">
+    <%= form_with(url: posts_path, local: true) do |f| %>
+        <%= f.label :phrase, "フレーズ" %>
+        <%= f.text_field :phrase %>
+
+        <%= f.label :language, "言語" %>
+        <%= f.select :language, [["日本語", 0], ["英語", 1], ["その他", 2]] %>
+
+        <%= f.label :detail, "詳細"%><br />
+        <em>URLやメモを入力してください。この項目は他のユーザーに公開されません。</em>
+        <%= f.text_field :detail %>
+
+        <%= f.label :is_original, "出典はありますか？"%>
+        <%= f.radio_button :is_original, true %>　ありません
+        <%= f.radio_button :is_original, false %>　あります
+
+        <%= f.label :is_sharing, "共有しますか？"%>
+        <%= f.radio_button :is_sharing, false %>　notesとして投稿
+        <%= f.radio_button :is_sharing, true %>　shareとして投稿
+
+        <div class="source_field">
+            <%= f.label :category, "出典元のジャンル" %>
+            <%= f.select :category, [["本", 0], ["映画", 1], ["音楽", 2], ["インターネット", 3], ["その他", 4]] %>
+
+            <%= f.label :author, "著者" %>
+            <%= f.text_field :author %>
+
+            <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title %>
+        </div>
+
+        <%= f.submit "投稿する"%>
+    <% end %>
+</div>

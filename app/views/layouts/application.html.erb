@@ -7,9 +7,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# FontAwesome CDN Link %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   </head>
 
   <body>
-    <%= yield %>
+    <%= render("layouts/header") %>
+    <div class="container-fluid">
+      <p　id="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
