@@ -1,0 +1,27 @@
+<h2>編集する</h2>
+
+<div class="row">
+    <%= form_with(model: @post, url: post_path(@post.id), method: :patch, local: true) do |f| %>
+        <%= f.label :phrase, "フレーズ" %>
+        <%= f.text_field :phrase %>
+
+        <%= f.label :language, "言語" %>
+        <%= f.select :language, [["日本語", 0], ["英語", 1], ["その他", 2]] %>
+
+        <%= f.label :detail, "詳細"%><br />
+        <em>URLやメモを入力してください。この項目は他のユーザーに公開されません。</em>
+        <%= f.text_field :detail %>
+
+        <%= f.label :is_original, "出典はありますか？"%>
+        <%= f.radio_button :is_original, true %>　ありません
+        <%= f.radio_button :is_original, false %>　あります
+
+        <%= f.label :is_sharing, "共有しますか？"%>
+        <%= f.radio_button :is_sharing, false %>　notesとして投稿
+        <%= f.radio_button :is_sharing, true %>　shareとして投稿
+
+        <%= f.submit "編集する"%>
+    <% end %>
+</div>
+
+<%# form to change source will create with modal later %>
