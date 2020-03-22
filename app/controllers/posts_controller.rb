@@ -8,6 +8,14 @@ class PostsController < ApplicationController
         if(@post.is_sharing == false)
             ensure_correct_user
         end
+        unless(@post.is_original)
+            @source = Source.find(@post.source_id)
+        end
+        if(@post.is_sharing)
+            render("/posts/share_show")
+        else
+            render("/posts/note_show")
+        end
     end
 
     def new
@@ -73,7 +81,7 @@ class PostsController < ApplicationController
     end
 
     def shares
-        @post = Post.where(is_sharing: true).order("created_at DESC")
+        @posts = Post.where(is_sharing: true).order("created_at DESC")
     end
 
     def first_post
