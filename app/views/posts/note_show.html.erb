@@ -1,0 +1,21 @@
+<div class="row">
+    <%= render("/layouts/sidebar") %>
+
+    <div class="col-xs-10">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <% if(@source.present?) %>
+                    <em><%= "#{@source.title}, #{@source.author}" %></em>
+                <% else %>
+                    <em>Original</em>
+                <% end %>
+            </div>
+            <div class="panel-body">
+                <h1><%= @post.phrase %></h1>
+            </div>
+            <div class="panel-footer">
+                <%= @post.detail %>
+            </div>
+        </div>
+    </div>
+</div>
