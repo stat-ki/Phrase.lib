@@ -1,0 +1,39 @@
+<h2>投稿する</h2>
+<h3>登録ありがとうございます！最初の投稿をしましょう！</h3>
+<p>あなたの座右の銘を教えてください。</p>
+
+<div class="row">
+    <%= form_with(url: posts_path, local: true) do |f| %>
+        <%= f.label :phrase, "フレーズ" %>
+        <%= f.text_field :phrase, title: "好きなフレーズを入力してください。 例)I'm gonna make him an offer he can't refuse.", data: {toggle: "tooltip"} %>
+
+        <%= f.label :language, "言語" %>
+        <%= f.select :language, [["日本語", 0], ["英語", 1], ["その他", 2]], title: "言語をえらんでください。　例）英語", data: {toggle: "tooltip"} %>
+
+        <%= f.label :detail, "詳細"%><br />
+        <em>URLやメモを入力してください。この項目は他のユーザーに公開されません。</em>
+        <%= f.text_field :detail %>
+
+        <%= f.label :is_original, "出典はありますか？"%>
+        <%= f.radio_button :is_original, true %>　ありません
+        <%= f.radio_button :is_original, false %>　あります
+
+        <%= f.label :is_sharing, "共有しますか？"%>
+        <em>notesは他のユーザーは見ることができません。shareは他のユーザーも見ることができます。</em>
+        <%= f.radio_button :is_sharing, false %>　notesとして投稿
+        <%= f.radio_button :is_sharing, true %>　shareとして投稿
+
+        <div class="source_field">
+            <%= f.label :category, "出典元のジャンル" %>
+            <%= f.select :category, [["本", 0], ["映画", 1], ["音楽", 2], ["インターネット", 3], ["その他", 4]], title: "出典元のカテゴリーを選んでください。　例）映画", data: {toggle: "tooltip"} %>
+
+            <%= f.label :author, "著者" %>
+            <%= f.text_field :author, title: "映画監督や著者、アーティストを入力してください。　例）Francis Ford Coppola", data: {toggle: "tooltip"} %>
+
+            <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title, title: "出典元のタイトルを入力してください。　例）The Godfather", data: {toggle: "tooltip"} %>
+        </div>
+
+        <%= f.submit "投稿する"%>
+    <% end %>
+</div>
