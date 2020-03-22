@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   # posts_controller
-  resources :posts, except: [:index]
   get "/notes" => "posts#notes"
   get "/shares" => "posts#shares"
   get "/first_post" => "posts#first_post"
+  resources :posts, except: [:index]
 
   # favorites_controller
   post "/posts/:post_id/favorite" => "favorites#create"
