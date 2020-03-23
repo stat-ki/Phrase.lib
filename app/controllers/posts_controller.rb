@@ -59,7 +59,7 @@ class PostsController < ApplicationController
 
     def update
         post = Post.find(params[:id])
-        post = Post.update(post_params)
+        post.update(posts_params)
         flash[:notice] = "投稿を更新しました。"
         redirect_to(post_path(post.id))
     end
@@ -91,7 +91,7 @@ class PostsController < ApplicationController
     private
 
     def posts_params
-        params(:posts).permit(:phrase, :language, :details, :is_original, :is_sharing)
+        params.require(:post).permit(:phrase, :language, :details, :is_original, :is_sharing)
     end
 
     def ensure_correct_user
