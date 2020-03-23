@@ -15,3 +15,16 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+    $("#search_model").on("change", function(){
+        $.when(
+            $("#search-introduction").fadeOut(),
+            $("#search_model").fadeOut()
+        ).done(function(){
+            $("#search-description").fadeIn();
+            $("#search_word").fadeIn();
+            $("#search-submit").fadeIn();
+        });
+    });
+});
