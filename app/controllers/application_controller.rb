@@ -9,4 +9,17 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     end
 
+    def after_sign_in_path_for(resource)
+        post = Post.find_by(user_id: current_user.id)
+        if(post.present?)
+            user_path(current_user.id)
+        else
+            first_post_path
+        end
+    end
+
+    def after_sign_out_path_for(resource)
+        user_session_path
+    end
+
 end
