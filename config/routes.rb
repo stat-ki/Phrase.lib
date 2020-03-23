@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "home#top"
 
   # devise_controller
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   # users_controller
   resources :users, only: [:show]
 
