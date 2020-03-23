@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
         if(post.present?)
             user_path(current_user.id)
         else
+        # When the user has not posted yet, redirect to tutorial page.
+        # Redirect here, after sign up also.
             first_post_path
         end
     end
