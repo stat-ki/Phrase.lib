@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   delete "/posts/:post_id/favorite" => "favorites#destroy"
 
   # search_controller
-  post "/search_result" => "search#search"
+  post "/search_result" => "search#search_result"
 
 end
