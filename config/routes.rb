@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   # search_controller
   post "/search_result" => "search#search_result"
 
+  # gem 'shortener'
+  get '/:id' => "shortener/shortened_urls#show"
+
 end
