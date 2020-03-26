@@ -1,3 +1,108 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+header {
+    background-color: black;
+    opacity: 0.8;
+}
+
+.bg-slider {
+    width: 100vw;
+    height: 100vh;
+    background-position:center center;
+    background-size: cover;
+}
+
+.container-fluid {
+    width: auto;
+}
+
+.top-row {
+  padding-top: 40vh;
+  text-align: center;
+}
+
+.top-title {
+  color: white;
+  font-family: Cochin;
+  font-size: 100px;
+}
+
+.about-row, .howto-row, .start-row {
+    text-align: center;
+    margin-top: 5vh;
+    padding-bottom: 2vh;
+    border-bottom: solid #adadad;
+}
+
+.about-title, .howto-title, .start-title {
+    font-family: Cochin;
+}
+
+.introduction-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.howto-image {
+    width: auto;
+    height: 30vh;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 5vh 0 2vh 0;
+}
+
+.start-description {
+    margin-bottom: 5vh;
+}
+
+.start-link {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    background-color: rgb(45, 67, 80);
+    border: 2px solid rgb(233, 255, 154);
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.start-link span {
+    position: relative;
+    z-index: 1;
+}
+
+.start-link::before, .start-link::after {
+    content: "";
+    display: block;
+    background-color: rgb(15, 151, 151);
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: .2s;
+}
+
+.start-link::before {
+    left: 0;
+}
+
+.start-link::after {
+    right: 0;
+}
+
+.start-link:hover:before, .start-link:hover:after {
+    width: 0;
+    background-color: rgb(15, 151, 151);
+}
+
+.start-link:hover {
+    color: #FFF;
+}
