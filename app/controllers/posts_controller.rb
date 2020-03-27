@@ -88,6 +88,35 @@ class PostsController < ApplicationController
 
     end
 
+    def translate
+        post = Post.find(params[:id])
+        # Create and encode URI parameter query.
+        params = URI.encode_www_form(text: "\"#{post.phrase}\"", source: "en", target: "ja")
+        # Parse URI to be enable to get host and port.
+        uri = URI.parse(ENV["TRANSLATE_API_KEY"] + "?" + params)
+
+        response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+            http.open_timeout = 5
+            http.read_timeout = 10
+            http.get(uri.request_uri)
+        end
+
+        begin
+            if(response.is_a?(Net::HTTPRedirection))
+                # Because response code will "302 Moved Temporarily", access the URI for redirct and request response again.
+                response = Net::HTTP.get_response(URI.parse(response["location"]))
+                # Convert response to JSON.
+                result = JSON.parse(response.body)
+                @text = result["text"]
+            else
+                raise
+            end
+        rescue => e
+            flash[:notice] = "エラーが発生しました。時間をおいて再度お試しください。"
+            redirect_to(post_path(post.id))
+        end
+    end
+
     private
 
     def posts_params
