@@ -12,34 +12,40 @@
             <div class="panel-body">
                 <div class="text-center">
                     <h1><%= @post.phrase %></h1>
+                    <div id="translated-phrase"></div>
                 </div>
             </div>
             <div class="panel-footer">
                 <div id="favorite-btn-<%= @post.id %>">
                     <%= render("/favorites/form", post: @post) %>
                 </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#sampleModal">
-                        <span class="fas fa-share-square">　共有する</span>
-                    </button>
-                </div>
+                <%# When the language isn't japanese %>
+                <% if(@post.language != 0) %>
+                    <%= link_to("翻訳する", "/posts/#{@post.id}/translate", class: "pull-right", remote: true) %>
+                <% end %>
             </div>
         </div>
-            <% if(@source.present?) %>
-                <div class="source-field">
-                    <table>
-                        <tr>
-                            <th>作者</th>
-                            <td><%= @source.author %></td>
-                        </tr>
-                        <tr>
-                            <th>タイトル</th>
-                            <td><%= @source.title %></td>
-                        </tr>
-                    </table>
-                </div>
-            <% end %>
+
+        <div class="pull-right">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#sampleModal">
+                <span class="fas fa-share-square">　共有する</span>
+            </button>
         </div>
+
+        <% if(@source.present?) %>
+            <div class="source-field">
+                <table>
+                    <tr>
+                        <th>作者</th>
+                        <td><%= @source.author %></td>
+                    </tr>
+                    <tr>
+                        <th>タイトル</th>
+                        <td><%= @source.title %></td>
+                    </tr>
+                </table>
+            </div>
+        <% end %>
     </div>
 </div>
 
