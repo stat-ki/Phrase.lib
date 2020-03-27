@@ -84,4 +84,8 @@ gem 'devise'
 # Use shortener to generate shorten URL
 gem 'shortener'
 
+# Use pry-byebug to debug
 gem 'pry-byebug'
+
+# Use dotenv-rails to handle environment variables
+gem 'dotenv-rails'
