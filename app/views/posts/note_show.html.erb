@@ -12,9 +12,14 @@
             </div>
             <div class="panel-body">
                 <h1><%= @post.phrase %></h1>
+                <div id="translated-phrase"></div>
             </div>
             <div class="panel-footer">
                 <%= @post.detail %>
+                <%# When the language isn't japanese %>
+                <% if(@post.language != 0) %>
+                    <%= link_to("翻訳する", "/posts/#{@post.id}/translate", class: "pull-right", remote: true) %>
+                <% end %>
             </div>
         </div>
     </div>
