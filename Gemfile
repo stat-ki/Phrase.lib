@@ -89,3 +89,7 @@ gem 'pry-byebug'
 
 # Use dotenv-rails to handle environment variables
 gem 'dotenv-rails'
+
+# Use omniauth to implement SNS authentication
+gem 'omniauth'
+gem 'omniauth-twitter'
