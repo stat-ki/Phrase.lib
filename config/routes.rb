@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get "/notes" => "posts#notes"
   get "/shares" => "posts#shares"
   get "/first_post" => "posts#first_post"
-  get "posts/:id/translate" => "posts#translate"
+  get "/posts/:id/translate" => "posts#translate"
+  get "/posts/:id/search_items" => "posts#search_items"
   resources :posts, except: [:index]
 
   # favorites_controller

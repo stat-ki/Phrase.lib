@@ -41,20 +41,22 @@
             </div>
         </div>
 
-        <% if(@source.present?) %>
-            <div class="source-field">
-                <table>
-                    <tr>
-                        <th>作者</th>
-                        <td><%= @source.author %></td>
-                    </tr>
-                    <tr>
-                        <th>タイトル</th>
-                        <td><%= @source.title %></td>
-                    </tr>
-                </table>
-            </div>
+        <% unless(@post.is_original) %>
+            <table>
+                <tr>
+                    <th>作者</th>
+                    <td><%= @source.author %></td>
+                </tr>
+                <tr>
+                    <th>タイトル</th>
+                    <td><%= @source.title %></td>
+                </tr>
+            </table>
+
+            <%= link_to("楽天市場で商品を検索する", "/posts/#{@post.id}/search_items", class: "btn btn-default", remote: true) %>
+            <div id="item-table"></div>
         <% end %>
+
     </div>
 </div>
 
