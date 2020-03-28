@@ -93,3 +93,6 @@ gem 'dotenv-rails'
 # Use omniauth to implement SNS authentication
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+# Use rakuten_web_service to handle rakuten api
+gem 'rakuten_web_service'
