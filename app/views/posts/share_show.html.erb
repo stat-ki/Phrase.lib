@@ -26,10 +26,19 @@
             </div>
         </div>
 
-        <div class="pull-right">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#sampleModal">
-                <span class="fas fa-share-square">　共有する</span>
-            </button>
+        <div class="container">
+            <div class="row">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#sampleModal">
+                        <span class="fas fa-share-square">　共有する</span>
+                    </button>
+                    <%= link_to("https://twitter.com/intent/tweet?text=#{@post.phrase} #{short_url(request.url)}", target: :_blank) do %>
+                        <div class="btn btn-twitter">
+                            <span class="fab fa-twitter"> Tweet</span>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
         </div>
 
         <% if(@source.present?) %>
