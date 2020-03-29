@@ -13,9 +13,11 @@
 
   <body>
     <%= render("layouts/header") %>
-    <div class="container-fluid">
-      <p　id="notice"><%= notice %></p>
-      <%= yield %>
+    <div class="body">
+      <div class="container-fluid">
+        <p　id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
