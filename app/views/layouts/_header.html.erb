@@ -25,13 +25,12 @@
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to(new_user_session_path) do %>
+                    <%= link_to('javascript:void(0);', onclick: "openLoginModal();") do %>
                         <span class="fas fa-sign-in-alt">　ログイン</span>
                     <% end %>
                 </li>
                 <li>
-                    <%# Modify after create root page %>
-                    <%= link_to(new_user_registration_path) do %>
+                    <%= link_to('javascript:void(0);', onclick: "openRegisterModal();") do %>
                         <span class="fas fa-user-plus">　会員登録はこちら</span>
                     <% end %>
                 </li>
@@ -39,3 +38,4 @@
         </div>
     </div>
 </header>
+<%= render("/layouts/login_register_modal") %>
