@@ -13,10 +13,9 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+$(function () {
     $("#search_model").on("change", function(){
         $.when(
             $("#search-introduction").fadeOut(),
