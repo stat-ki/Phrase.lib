@@ -24,6 +24,11 @@
                     <% end %>
                 </li>
                 <li>
+                    <%= link_to("/users/#{current_user.id}/favorite") do %>
+                        <span class="fas fa-bookmark"> いいね！を見る</span>
+                    <% end %>
+                </li>
+                <li>
                     <%= link_to(edit_user_registration_path) do %>
                         <span class="fas fa-wrench"> ユーザー情報を編集する</span>
                     <% end %>

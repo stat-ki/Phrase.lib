@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # favorites_controller
   post "/posts/:post_id/favorite" => "favorites#create"
   delete "/posts/:post_id/favorite" => "favorites#destroy"
+  get "users/:id/favorite" => "favorites#index"
 
   # search_controller
   post "/search_result" => "search#search_result"
