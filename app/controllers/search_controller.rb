@@ -11,4 +11,21 @@ class SearchController < ApplicationController
         end
     end
 
+    def search_items
+        post = Post.find(params[:id])
+        source = Source.find(post.source_id)
+        case source.category
+        # book
+        when 0
+            @genreId = 200162
+        # movie
+        when 1
+            @genreId = 505034
+        # music
+        when 2
+            @genreId = 101311
+        end
+        @items = RakutenWebService::Ichiba::Item.search(keyword: source.title, genreId: @genreId).first(5)
+    end
+
 end
