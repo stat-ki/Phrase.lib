@@ -22,10 +22,6 @@ header {
     opacity: 0.9;
 }
 
-body {
-    min-height: 100vh;
-}
-
 .body{
 	margin-top: 50px;
 }
@@ -35,15 +31,20 @@ body {
     object-fit: cover;
 }
 
+.image-preview {
+    height: 350px;
+    width: 350px;
+}
+
 .sidebar {
     height: 100%;
     margin-top: 10px;
 }
 
 .sidebar_image {
-    width: 50%;
-    height: 50%;
-    padding-top: 2vh;
+    width: 100px;
+    height: 100px;
+    margin-top: 2vh;
     margin-bottom: 3vh;
 }
 
@@ -83,4 +84,18 @@ body {
 .btn-twitter:hover {
     color: white;
     background-color: #0093ce;
+}
+
+.btn-google {
+    color: white;
+    background-color: #F74933;
+}
+
+.btn-google:hover {
+    color: white;
+    background-color: rgb(226, 65, 44);
+}
+
+.devise-form {
+    margin-bottom: 2vh;
 }
