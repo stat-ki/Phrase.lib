@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   # devise_controller
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
@@ -17,7 +16,6 @@ Rails.application.routes.draw do
   get "/shares" => "posts#shares"
   get "/first_post" => "posts#first_post"
   get "/posts/:id/translate" => "posts#translate"
-  get "/posts/:id/search_items" => "posts#search_items"
   resources :posts, except: [:index]
 
   # favorites_controller
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
 
   # search_controller
   post "/search_result" => "search#search_result"
+  get "/posts/:id/search_items" => "search#search_items"
 
   # gem 'shortener'
   get '/:id' => "shortener/shortened_urls#show"

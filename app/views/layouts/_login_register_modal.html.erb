@@ -12,7 +12,7 @@
                             <%= link_to(omniauth_authorize_path(resource_name, :twitter), class:"circle twitter") do %>
                                 <i class="fab fa-twitter"></i>
                             <% end %>
-                            <%= link_to(omniauth_authorize_path(resource_name, :twitter), class:"circle google") do %>
+                            <%= link_to(omniauth_authorize_path(resource_name, :google_oauth2), class:"circle google") do %>
                                 <i class="fab fa-google"></i>
                             <% end %>
                         </div>
@@ -37,8 +37,8 @@
                             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                                 <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
                                 <%= f.text_field :name, autocomplete: "name", placeholder: "ユーザー名", class:"form-control" %>
-                                <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "form-control" %>
-                                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用)", class: "form-control" %>
+                                <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（最低６文字）", class: "form-control" %>
+                                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用）", class: "form-control" %>
                                 <%= f.submit "新規登録", class:"btn btn-default btn-register" %>
                             <% end %>
                         </div>
