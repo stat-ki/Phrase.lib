@@ -4,36 +4,11 @@
     <div class="col-xs-10">
         <%= attachment_image_tag(current_user, :profile_image, :fill, 350, 350, fallback: "no_image.jpg", size: "350x350", class: "img-responsive center-block") %>
         <div class="text-center">
-        <h1><%= @user.name %></h1>
+            <h1><%= @user.name %></h1>
             <%= link_to("/users/#{current_user.id}/favorite") do %>
                 <span class="fas fa-bookmark"> いいね！を見る</span>
             <% end %>
         </div>
-        <% @posts.each do |post| %>
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <% source = Source.find_by(id:  post.source_id) %>
-                    <% if(source.present?) %>
-                        <em><%= "#{source.title}, #{source.author}" %></em>
-                    <% else %>
-                        <em>Original</em>
-                    <% end %>
-                </div>
-                <div class="panel-body">
-                    <h1><%= post.phrase %></h1>
-                </div>
-                <div class="panel-footer">
-                    <% if post.favorited_by?(current_user) %>
-                        <%= link_to("/posts/#{post.id}/favorite", method: :delete, remote: true) do %>
-                            <span class="fas fa-thumbs-up"></span><%= post.favorites.count%>
-                        <% end %>
-                    <% else %>
-                        <%= link_to("/posts/#{post.id}/favorite", method: :post, remote: true) do %>
-                            <span class="far fa-thumbs-up"></span><%= post.favorites.count %>
-                        <% end %>
-                    <% end %>
-                </div>
-            </div>
-        <% end %>
+        <%= render("/posts/shares_index", posts: @posts) %>
     </div>
 </div>
