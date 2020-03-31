@@ -1,8 +1,8 @@
 <div class="form-group">
     <%= form_with(url: search_result_path, local: true, class: "navbar-form") do |f| %>
         <p id="search-introduction">検索項目を選んでください：　</p>
-        <%= f.select(:search_model, [["ユーザー名", :user_name], ["フレーズ", :phrase]], {include_blank: true}) %>
-        <p id="search-description">キーワードを入れてください：　</p>
+        <%= f.select(:search_model, [["ユーザー名", :user_name], ["フレーズ", :phrase], ["出典タイトル", :source_title], ["著者・作者", :source_author] ], {include_blank: true}) %>
+        <p id="search-description">検索ワードを入れてください：　</p>
         <%= f.text_field(:search_word, class: "form-control", placeholder: "キーワード") %><br />
         <%= f.submit("検索する", class: "btn btn-default center-block", id: "search-submit") %>
     <% end %>
