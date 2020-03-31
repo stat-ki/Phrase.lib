@@ -14,7 +14,7 @@
   <body>
     <%= render("layouts/header") %>
     <div class="body">
-      <p　id="notice"><%= notice %></p>
+      <p id="notice"><%= flash[:notice] %></p>
       <div class="container-fluid bg-slider">
         <div class="row top-row">
           <div class="col-xs-12">
@@ -89,7 +89,7 @@
               登録をしていただいた場合、全ての機能をご利用いただけます。
           </p>
           <div class="col-xs-6">
-            <%= link_to('javascript:void(0);', onclick: "openLoginModal();", class: "start-link") do %>
+            <%= link_to('javascript:void(0);', onclick: "openRegisterModal();", class: "start-link") do %>
               <span>新規登録する</span>
             <% end %>
           </div>
