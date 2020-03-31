@@ -10,7 +10,7 @@
                     <%= link_to(user_path(user.id)) do %>
                         <div class="panel panel-info ">
                             <div class="panel-heading">
-                                <%= attachment_image_tag(user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive") %>
+                                <%= attachment_image_tag(user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive center-block") %>
                             </div>
                             <div class="panel-body">
                                 <%= user.name %>

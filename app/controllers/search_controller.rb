@@ -8,6 +8,26 @@ class SearchController < ApplicationController
         when("phrase")
             @posts = Post.where("phrase LIKE?", "%#{params[:search_word]}%").where(is_sharing: true)
             render("/search/posts_index")
+        when("source_title")
+            sources = Source.where("title LIKE?", "%#{params[:search_word]}%")
+            @posts = []
+            sources.each do |source|
+                matched_post = Post.where(source_id: source.id, is_sharing: true)
+                @posts.push(matched_post)
+            end
+            # Convert 3D array to 2D array
+            @posts.flatten!(2)
+            render("/search/posts_index")
+        when("source_author")
+            sources = Source.where("author LIKE?", "%#{params[:search_word]}%")
+            @posts = []
+            sources.each do |source|
+                matched_post = Post.where(source_id: source.id, is_sharing: true)
+                @posts.push(matched_post)
+            end
+            # Convert 3D array to 2D array
+            @posts.flatten!(2)
+            render("/search/posts_index")
         end
     end
 
