@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get "/posts/:id/translate" => "posts#translate"
   resources :posts, except: [:index]
 
+  # sources_controller
+  resources :sources, only: [:show, :update]
+
   # favorites_controller
   post "/posts/:post_id/favorite" => "favorites#create"
   delete "/posts/:post_id/favorite" => "favorites#destroy"

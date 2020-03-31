@@ -35,14 +35,16 @@ class PostsController < ApplicationController
             source = Source.find_by(
                 category: params[:category],
                 author: params[:author],
-                title: params[:title]
+                title: params[:title],
+                user_id: current_user.id
             )
             # When no records matched, create as new record.
             if(source.blank?)
                 source = Source.new(
                     category: params[:category],
                     author: params[:author],
-                    title: params[:title]
+                    title: params[:title],
+                    user_id: current_user.id
                 )
                 source.save
             end
@@ -95,13 +97,13 @@ class PostsController < ApplicationController
         # Parse URI to be enable to get host and port.
         uri = URI.parse(ENV["TRANSLATE_API_KEY"] + "?" + params)
 
-        response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
-            http.open_timeout = 5
-            http.read_timeout = 10
-            http.get(uri.request_uri)
-        end
-
         begin
+            response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+                http.open_timeout = 5
+                http.read_timeout = 10
+                http.get(uri.request_uri)
+            end
+
             if(response.is_a?(Net::HTTPRedirection))
                 # Because response code will "302 Moved Temporarily", access the URI for redirct and request response again.
                 response = Net::HTTP.get_response(URI.parse(response["location"]))
