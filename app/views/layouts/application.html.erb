@@ -14,8 +14,8 @@
   <body>
     <%= render("layouts/header") %>
     <div class="body">
+      <p id="notice"><%= flash[:notice] %></p>
       <div class="container-fluid">
-        <p　id="notice"><%= notice %></p>
         <%= yield %>
       </div>
     </div>
