@@ -6,6 +6,7 @@ class User < ApplicationRecord
   attachment :profile_image
   has_many :posts
   has_many :favorites
+  has_many :sources
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
