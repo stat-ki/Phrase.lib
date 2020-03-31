@@ -2,25 +2,6 @@
     <%= render("/layouts/sidebar") %>
 
     <div class="col-xs-10">
-        <% @posts.each do |post| %>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                            <%= attachment_image_tag(post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive") %>
-                            <%= post.user.name %>
-                        </div>
-                        <div class="panel-body">
-                            <h3><%= post.phrase %></h3>
-                        </div>
-                        <div class="panel-footer">
-                            <div id="favorite-btn-<%= post.id %>">
-                                <%= render("/favorites/form", post: post) %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% end %>
+        <%= render("/posts/shares_index", posts: @posts) %>
     </div>
 </div>
