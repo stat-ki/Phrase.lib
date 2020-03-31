@@ -13,6 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap-sprockets
+//= require data-confirm-modal
 //= require_tree .
 
 $(function () {
