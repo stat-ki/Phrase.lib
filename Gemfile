@@ -65,7 +65,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Origin
 
-# Use refile to bundle images
+# Use refile to handle images
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 
@@ -74,8 +74,9 @@ gem 'bootstrap-sass'
 
 # bootstrap theme
 gem 'honoka-rails'
+gem 'data-confirm-modal'
 
-# Use jquery to bundle JS
+# Use jquery to handle JS
 gem 'jquery-rails'
 
 # Use devise to customize authenticate functions
