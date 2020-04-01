@@ -101,7 +101,27 @@ header {
 
 .btn-google:hover {
     color: white;
-    background-color: rgb(226, 65, 44);
+    background-color: #d6422f;
+}
+
+.btn-rakuten {
+    color: black;
+    background-color: #bf0000;
+}
+
+.btn-rakuten:hover {
+    color: black;
+    background-color: #af0000;
+}
+
+.btn-amazon {
+    color: black;
+    background-color: #FF9900;
+}
+
+.btn-amazon:hover {
+    color: black;
+    background-color: rgb(230, 138, 1);
 }
 
 .devise-form {
