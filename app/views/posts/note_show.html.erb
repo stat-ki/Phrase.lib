@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <p><%= @post.detail %></p>
+                        <%= raw Rinku.auto_link(@post.detail) %>
                     </div>
                 </div>
             </div>
