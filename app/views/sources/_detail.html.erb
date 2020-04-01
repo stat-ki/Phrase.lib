@@ -1,0 +1,48 @@
+<% unless(post.is_original) %>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-bordered source-table">
+                <tbody>
+                    <tr>
+                        <th class="col-xs-3 info">作者</th>
+                        <td class="col-xs-5"><%= link_to(source.author, source_path(source.id, title_search: false)) %></td>
+                        <td class="col-xs-2">
+                            <%= link_to("https://ja.wikipedia.org/w/index.php?search=#{source.title}", class: "btn btn-default", target: :_blank) do %>
+                                <span class="fab fa-wikipedia-w"> Wikipediaで検索する</span>
+                            <% end %>
+                        </td class="col-xs-2">
+                        <td>
+                            <%= link_to("https://www.google.com/search?q=#{source.title}", class: "btn btn-google", target: :_blank) do %>
+                                <span class="fab fa-google"> Googleで検索する</span>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-3 info">タイトル</th>
+                        <td class="col-xs-5"><%= link_to(source.title, source_path(source.id, title_search: true)) %></td>
+                        <td class="col-xs-2">
+                            <%= link_to("https://ja.wikipedia.org/w/index.php?search=#{source.title}", class: "btn btn-default", target: :_blank) do %>
+                                <span class="fab fa-wikipedia-w"> Wikipediaで検索する</span>
+                            <% end %>
+                        </td>
+                        <td class="col-xs-2">
+                            <%= link_to("https://www.google.com/search?q=#{source.title}", class: "btn btn-google", target: :_blank) do %>
+                                <span class="fab fa-google"> Googleで検索する</span>
+                            <% end %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row clearfix">
+            <div class="pull-left">
+                <%= link_to("楽天市場で商品を検索する", "/posts/#{post.id}/search_items", class: "btn btn-rakuten", remote: true) %>
+                <%= link_to("https://www.amazon.co.jp/s?k=starwars", class:"btn btn-amazon", target: :_blank) do %>
+                    <span class="fab fa-amazon"> Amazonで商品を検索する（別タブ）</span>
+                <% end %>
+            </div>
+            <div id="item-table"></div>
+        </div>
+    </div>
+<% end %>

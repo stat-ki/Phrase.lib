@@ -5,16 +5,28 @@
         <% @posts.each do |post| %>
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="panel panel-warning">
+                    <div class="panel panel-success  clearfix">
                         <div class="panel-heading">
-                            <%= attachment_image_tag(post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive") %>
-                            <%= post.user.name %>
+                            <% if(post.is_original) %>
+                                <h4>Original</h4>
+                            <% else %>
+                                <% source = Source.find(post.source_id) %>
+                                <em><%= "#{source.title}, #{source.author}" %></em>
+                            <% end %>
+                            <div class="pull-right post-config-field">
+                                <%= link_to("", edit_post_path(post.id), class: "fas fa-edit") %>
+                                <%= link_to("", post_path(post.id), method: :delete, class:"fas fa-trash", data: {confirm: "削除された投稿は元に戻すことができません。本当に削除してよろしいですか？"}, title:"Delete post?") %>
+                            </div>
                         </div>
-                        <div class="panel-body">
-                            <h3><%= post.phrase %></h3>
-                        </div>
+                        <%= link_to(post_path(post.id)) do%>
+                            <div class="panel-body">
+                                <div class="phrase-area">
+                                    <h1 class="text-center"><%= post.phrase %></h1>
+                                </div>
+                            </div>
+                        <% end %>
                         <div class="panel-footer">
-                            <%= post.detail %>
+                            <p><%= post.detail %></p>
                         </div>
                     </div>
                 </div>

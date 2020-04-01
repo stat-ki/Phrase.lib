@@ -19,7 +19,7 @@
                         <div class="phrase-area">
                             <h1 class="text-center"><%= post.phrase %></h1>
                             <% if(post.is_original) %>
-                                <h4>Original</h4>
+                                <h4 class="pull-right">Original</h4>
                             <% else %>
                                 <% source = Source.find(post.source_id) %>
                                 <h4 class="pull-right"><%= "#{source.title}, #{source.author}" %></h4>

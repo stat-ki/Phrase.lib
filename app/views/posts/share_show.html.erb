@@ -2,20 +2,31 @@
     <%= render("/layouts/sidebar") %>
 
     <div class="col-xs-10">
-        <div class="panel panel-warning">
+        <div class="panel panel-warning  clearfix">
             <div class="panel-heading">
-            <%= link_to(user_path(@post.user)) do %>
-                <%= attachment_image_tag(@post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive pull-left") %>
-                <%= @post.user.name %>
-            <% end %>
+                <%= link_to(user_path(@post.user)) do %>
+                    <%= attachment_image_tag(@post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive　pull-left") %>
+                    <%= @post.user.name %>
+                <% end %>
+                <% if(@post.user == current_user) %>
+                    <div class="pull-right post-config-field">
+                        <%= link_to("", edit_post_path(@post.id), class: "fas fa-edit") %>
+                        <%= link_to("", post_path(@post.id), method: :delete, class:"fas fa-trash", data: {confirm: "削除された投稿は元に戻すことができません。本当に削除してよろしいですか？"}, title:"Delete post?") %>
+                    </div>
+                <% end %>
             </div>
-            <div class="panel-body">
-                <div class="text-center">
-                    <h1><%= @post.phrase %></h1>
-                    <div id="translated-phrase"></div>
+                <div class="panel-body">
+                    <div class="phrase-area">
+                        <h1 class="text-center"><%= @post.phrase %></h1>
+                        <div id="translated-phrase" class="text-center"></div>
+                        <% if(@post.is_original) %>
+                            <h4>Original</h4>
+                        <% else %>
+                            <h4 class="pull-right"><%= "#{@source.title}, #{@source.author}" %></h4>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
-            <div class="panel-footer">
+            <div class="panel-footer clearfix">
                 <div id="favorite-btn-<%= @post.id %>">
                     <%= render("/favorites/form", post: @post) %>
                 </div>
@@ -26,10 +37,11 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
+
+        <div class="container-fluid">
+            <div class="row clearfix">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#sampleModal">
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#uri-modal">
                         <span class="fas fa-share-square">　共有する</span>
                     </button>
                     <%= link_to("https://twitter.com/intent/tweet?text=#{@post.phrase} #{short_url(request.url)}", target: :_blank) do %>
@@ -41,27 +53,12 @@
             </div>
         </div>
 
-        <% unless(@post.is_original) %>
-            <table>
-                <tr>
-                    <th>作者</th>
-                    <td><%= @source.author %></td>
-                </tr>
-                <tr>
-                    <th>タイトル</th>
-                    <td><%= @source.title %></td>
-                </tr>
-            </table>
-
-            <%= link_to("楽天市場で商品を検索する", "/posts/#{@post.id}/search_items", class: "btn btn-default", remote: true) %>
-            <div id="item-table"></div>
-        <% end %>
-
+        <%= render("/sources/detail", post: @post, source: @source) %>
     </div>
 </div>
 
 <%# modal %>
-<div class="modal fade" id="sampleModal" tabindex="-1">
+<div class="modal fade" id="uri-modal" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
