@@ -309,22 +309,22 @@ span.round-tab:hover {
     font-size      : 18px;                /* 文字サイズ         */
     line-height    : 60px;                /* 太字               */
     font-weight    : bold;                /* 太字               */
-    background     : #ffff93;                /* 背景色             */
+    background     : #94ff94;                /* 背景色             */
     box-shadow     : 3px 3px 6px #888;    /* 影付け             */
     transition     : .3s;                 /* ゆっくり変化       */
 }
 
 /* === ON側のチェックボックスのラベル（ONのとき） ========== */
 .is_sharing-button label span:after{
-    content        : "share";               /* 表示する文字       */
+    content        : "note";               /* 表示する文字       */
     color          : #fff;
 }
 .is_sharing-button #is_sharing:checked + label {
-    background     : #94ff94;             /* 背景色             */
+    background     : #ffff93;             /* 背景色             */
     box-shadow     : none;                /* 影を消す           */
 }
 .is_sharing-button #is_sharing:checked + label span:after {
-    content        : "note";                /* 表示する文字       */
+    content        : "share";                /* 表示する文字       */
     color          : #fff;                /* 文字色             */
 }
 

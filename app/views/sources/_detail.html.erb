@@ -7,12 +7,12 @@
                         <th class="col-xs-3 info">作者</th>
                         <td class="col-xs-5"><%= link_to(source.author, source_path(source.id, title_search: false)) %></td>
                         <td class="col-xs-2">
-                            <%= link_to("https://ja.wikipedia.org/w/index.php?search=#{source.title}", class: "btn btn-default", target: :_blank) do %>
+                            <%= link_to("https://ja.wikipedia.org/w/index.php?search=#{source.author}", class: "btn btn-default", target: :_blank) do %>
                                 <span class="fab fa-wikipedia-w"> Wikipediaで検索する</span>
                             <% end %>
                         </td class="col-xs-2">
                         <td>
-                            <%= link_to("https://www.google.com/search?q=#{source.title}", class: "btn btn-google", target: :_blank) do %>
+                            <%= link_to("https://www.google.com/search?q=#{source.author}", class: "btn btn-google", target: :_blank) do %>
                                 <span class="fab fa-google"> Googleで検索する</span>
                             <% end %>
                         </td>
