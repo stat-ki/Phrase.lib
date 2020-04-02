@@ -1,19 +1,18 @@
 class PostsController < ApplicationController
 
+    before_action :authenticate_user!, only: [:create, :edit, :update, :destroy, :notes]
     before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
     def show
         @post = Post.find(params[:id])
-        # When the post is not for share, only user posted this can access.
-        if(@post.is_sharing == false)
-            ensure_correct_user
-        end
         unless(@post.is_original)
             @source = Source.find(@post.source_id)
         end
         if(@post.is_sharing)
             render("/posts/share_show")
         else
+            # When the post is not for share, only user posted this can access.
+            ensure_correct_user
             render("/posts/note_show")
         end
     end
@@ -57,12 +56,15 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id])
+        unless(@post.is_original)
+            @source = Source.find(@post.source_id)
+        end
     end
 
     def update
         post = Post.find(params[:id])
         post.update(posts_params)
-        flash[:notice] = "投稿を更新しました。"
+        flash[:notice] = "投稿を更新しました"
         redirect_to(post_path(post.id))
     end
 
@@ -70,7 +72,7 @@ class PostsController < ApplicationController
         post = Post.find(params[:id])
         was_shared = post.is_sharing
         post.destroy
-        flash[:notice] = "投稿を削除しました。"
+        flash[:notice] = "投稿を削除しました"
         if(was_shared)
             redirect_to(shares_path)
         else
@@ -105,7 +107,7 @@ class PostsController < ApplicationController
             end
 
             if(response.is_a?(Net::HTTPRedirection))
-                # Because response code will "302 Moved Temporarily", access the URI for redirct and request response again.
+                # Because response code will "302 Moved Temporarily", access the URI for redirect and request response again.
                 response = Net::HTTP.get_response(URI.parse(response["location"]))
                 # Convert response to JSON.
                 result = JSON.parse(response.body)

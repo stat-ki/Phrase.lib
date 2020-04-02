@@ -1,5 +1,8 @@
 class SourcesController < ApplicationController
 
+    before_action :authenticate_user!, only: [:update]
+    before_action :ensure_correct_user, only: [:update]
+
     def show
         source = Source.find(params[:id])
         @posts = []
@@ -20,8 +23,8 @@ class SourcesController < ApplicationController
     def update
         source = Source.find(params[:id])
         source.update(sources_params)
-        flash[:notice] = "出典を更新しました。"
-        redirct_to(user_path(current_user.id))
+        flash[:notice] = "出典を更新しました"
+        redirect_to(user_path(current_user.id))
     end
 
     private
@@ -30,4 +33,11 @@ class SourcesController < ApplicationController
         params.require(:source).permit(:category, :author, :title)
     end
 
+    def ensure_correct_user
+        source = Source.find(params[:id])
+        if(source.user_id != current_user.id)
+            flash[:notice] = "権限がありません"
+            redirect_to(user_path(current_user.id))
+        end
+    end
 end
