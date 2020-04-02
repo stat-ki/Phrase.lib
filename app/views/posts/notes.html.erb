@@ -1,5 +1,5 @@
 <div class="row">
-    <%= render("/layouts/sidebar") %>
+    <%= render("/layouts/notemode_sidebar") %>
 
     <div class="col-xs-10">
         <% @posts.each do |post| %>
@@ -8,7 +8,7 @@
                     <div class="panel panel-success  clearfix">
                         <div class="panel-heading">
                             <% if(post.is_original) %>
-                                <h4>Original</h4>
+                                <em>Original</em>
                             <% else %>
                                 <% source = Source.find(post.source_id) %>
                                 <em><%= "#{source.title}, #{source.author}" %></em>
