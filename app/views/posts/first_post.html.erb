@@ -1,39 +1,129 @@
-<h2>投稿する</h2>
-<h3>登録ありがとうございます！最初の投稿をしましょう！</h3>
-<p>あなたの座右の銘を教えてください。</p>
-
 <div class="row">
-    <%= form_with(url: posts_path, local: true) do |f| %>
-        <%= f.label :phrase, "フレーズ" %>
-        <%= f.text_field :phrase, title: "好きなフレーズを入力してください。 例)I'm gonna make him an offer he can't refuse.", data: {toggle: "tooltip"} %>
+	<section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
 
-        <%= f.label :language, "言語" %>
-        <%= f.select :language, [["日本語", 0], ["英語", 1], ["その他", 2]], title: "言語をえらんでください。　例）英語", data: {toggle: "tooltip"} %>
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="fas fa-pen-alt"></i>
+                            </span>
+                        </a>
+                    </li>
 
-        <%= f.label :detail, "詳細"%><br />
-        <em>URLやメモを入力してください。この項目は他のユーザーに公開されません。</em>
-        <%= f.text_field :detail %>
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="fas fa-users"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="fas fa-book-reader"></i>
+                            </span>
+                        </a>
+                    </li>
 
-        <%= f.label :is_original, "出典はありますか？"%>
-        <%= f.radio_button :is_original, true %>　ありません
-        <%= f.radio_button :is_original, false %>　あります
+                    <li role="presentation" class="disabled">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                </i><i class="fas fa-check"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <%= f.label :is_sharing, "共有しますか？"%>
-        <em>notesは他のユーザーは見ることができません。shareは他のユーザーも見ることができます。</em>
-        <%= f.radio_button :is_sharing, false %>　notesとして投稿
-        <%= f.radio_button :is_sharing, true %>　shareとして投稿
+            <%= form_with(url: posts_path, local: true) do |f| %>
+                <div class="tab-content container">
 
-        <div class="source_field">
-            <%= f.label :category, "出典元のジャンル" %>
-            <%= f.select :category, [["本", 0], ["映画", 1], ["音楽", 2], ["インターネット", 3], ["その他", 4]], title: "出典元のカテゴリーを選んでください。　例）映画", data: {toggle: "tooltip"} %>
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <h2 class="text-center">ご登録ありがとうございます！</h2>
+                        <h2 class="text-center">最初の投稿をしていきましょう！</h2>
+                        <p class="post-description">あなたの座右の銘や最近読んだ本からお気に入りのフレーズを教えてください。1フレーズ50文字以内で入力してください。</p>
+                        <%= f.text_area(:phrase, placeholder: "Phrase?") %>
+                        <p class="post-description">言語を選んでください。数式やコードなどはその他を選択してください。</p>
+                        <%= f.select(:language, [["日本語", 0], ["英語", 1], ["その他", 2]]) %>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-primary next-step">次へ</button></li>
+                        </ul>
+                    </div>
 
-            <%= f.label :author, "著者" %>
-            <%= f.text_field :author, title: "映画監督や著者、アーティストを入力してください。　例）Francis Ford Coppola", data: {toggle: "tooltip"} %>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        <h2 class="text-center">モードを選択してください</h2>
+                        <p  class="post-description">
+                            notesとして投稿したフレーズは他の人が見ることができません。<br />
+                            shareとして投稿したフレーズは他の人も見ることができます。（投稿後に切り替えることも可能です。）
+                        </p>
+                        <%= f.radio_button(:is_sharing, false) %>　notes
+                        <%= f.radio_button(:is_sharing, true) %>　share
+                        <div id="detail-field">
+                            <p class="post-description">説明やメモ、URLを入力してください。この項目はnotesとして投稿された時のみ見ることができます。</p>
+                            <%= f.text_area(:detail) %>
+                        </div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">戻る</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">次へ</button></li>
+                        </ul>
+                    </div>
 
-            <%= f.label :title, "タイトル" %>
-            <%= f.text_field :title, title: "出典元のタイトルを入力してください。　例）The Godfather", data: {toggle: "tooltip"} %>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h2 class="text-center">出典元はありますか？</h2>
+                        <p class="post-description">
+                            フレーズの出典を教えてください。オリジナルや出典元がわからない場合はなしを選んでださい。<br />
+                            ありを選んでいただいた場合、入力フォームが表示されます。
+                        </p>
+                        <%= f.radio_button :is_original, true %>　なし
+                        <%= f.radio_button :is_original, false %>　あり
+
+                        <%# Modal %>
+                        <div class="modal fade" id="source-modal" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        <h4 class="modal-title">出典元について教えてください</h4>
+                                    </div>
+                                    <div class="modal-body source-field">
+                                        <%= f.label(:category, "ジャンル") %><br />
+                                        <%= f.select(:category, [["本", 0], ["映画", 1], ["音楽", 2], ["インターネット", 3], ["その他", 4]]) %><br />
+
+                                        <%= f.label(:author, "著者") %>
+                                        <%= f.text_field(:author) %>
+
+                                        <%= f.label(:title, "タイトル") %>
+                                        <%= f.text_field(:title) %>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                        <button type="button" class="btn btn-primary">決定</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">戻る</button></li>
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">次へ</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h2 class="text-center">Thank You！</h2>
+                        <p class="post-description">
+                            項目は以上になります。右下の投稿ボタンを押して送信してください。<br />
+                            Phrase.libにようこそ！
+                        </p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">戻る</button></li>
+                            <li><%= f.submit("投稿する", class: "btn btn-primary") %></li>
+                        </ul>
+                    </div>
+                </div>
+            <% end %>
         </div>
-
-        <%= f.submit "投稿する"%>
-    <% end %>
+    </section>
 </div>
