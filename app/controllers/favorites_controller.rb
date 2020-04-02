@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+    before_action :authenticate_user!
+
     def index
         @user = User.find(params[:id])
         favorites = Favorite.where(user_id: @user.id)
