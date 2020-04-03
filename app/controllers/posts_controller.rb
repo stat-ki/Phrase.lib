@@ -4,16 +4,21 @@ class PostsController < ApplicationController
     before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
     def show
-        @post = Post.find(params[:id])
-        unless(@post.is_original)
-            @source = Source.find(@post.source_id)
-        end
-        if(@post.is_sharing)
-            render("/posts/share_show")
-        else
-            # When the post is not for share, only user posted this can access.
-            ensure_correct_user
-            render("/posts/note_show")
+        begin
+            @post = Post.find(params[:id])
+            unless(@post.is_original)
+                @source = Source.find(@post.source_id)
+            end
+            if(@post.is_sharing)
+                render("/posts/share_show")
+            else
+                # When the post is not for share, only user posted this can access.
+                ensure_correct_user
+                render("/posts/note_show")
+            end
+        rescue ActiveRecord::RecordNotFound
+            flash[:notice] = "投稿が見つかりません"
+            redirect_back(fallback_location: root_path)
         end
     end
 
@@ -31,27 +36,27 @@ class PostsController < ApplicationController
             is_sharing: params[:is_sharing]
         )
         unless(post.is_original)
-            source = Source.find_by(
+            # When no records matched, create as new record.
+            source = Source.find_or_create_by(
                 category: params[:category],
                 author: params[:author],
                 title: params[:title],
                 user_id: current_user.id
             )
-            # When no records matched, create as new record.
-            if(source.blank?)
-                source = Source.new(
-                    category: params[:category],
-                    author: params[:author],
-                    title: params[:title],
-                    user_id: current_user.id
-                )
-                source.save
+            unless(source.valid?)
+                flash[:notice] = "出典に項目の不備があります"
+                redirect_back(fallback_location: root_path)
             end
             post.source_id = source.id
         end
-        post.save
-        flash[:notice] = "投稿しました"
-        redirect_to(post_path(post.id))
+        if(post.valid?)
+            post.save
+            flash[:notice] = "投稿しました"
+            redirect_to(post_path(post.id))
+        else
+            flash[:notice] = "未入力の項目か入力内容に不備があります"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
     def edit
@@ -63,21 +68,20 @@ class PostsController < ApplicationController
 
     def update
         post = Post.find(params[:id])
-        post.update(posts_params)
-        flash[:notice] = "投稿を更新しました"
-        redirect_to(post_path(post.id))
+        if(post.update(posts_params))
+            flash[:notice] = "投稿を更新しました"
+            redirect_to(post_path(post.id))
+        else
+            flash[:notice] = "未入力の項目か入力内容に不備があります"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
     def destroy
         post = Post.find(params[:id])
-        was_shared = post.is_sharing
         post.destroy
         flash[:notice] = "投稿を削除しました"
-        if(was_shared)
-            redirect_to(shares_path)
-        else
-            redirect_to(notes_path)
-        end
+        redirect_to(user_path(current_user.id))
     end
 
     def notes

@@ -22,9 +22,13 @@ class SourcesController < ApplicationController
 
     def update
         source = Source.find(params[:id])
-        source.update(sources_params)
-        flash[:notice] = "出典を更新しました"
-        redirect_to(user_path(current_user.id))
+        if(source.update(sources_params))
+            flash[:notice] = "出典を更新しました"
+            redirect_to(user_path(current_user.id))
+        else
+            flash[:notice] = "入力内容に不備があります"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
     private

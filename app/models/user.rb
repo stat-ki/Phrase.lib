@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :sources
 
+  validates :name, presence: true, length: {maximum: 10}
+
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
