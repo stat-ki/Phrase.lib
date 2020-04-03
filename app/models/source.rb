@@ -5,4 +5,7 @@ class Source < ApplicationRecord
     validates :category, presence: true
     validates :author, presence: true
     validates :title, presence: true
+
+    enum category: [:book, :movie, :music, :web, :classic, :other]
+
 end
