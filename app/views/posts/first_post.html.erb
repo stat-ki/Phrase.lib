@@ -47,8 +47,9 @@
                         <p class="post-description">あなたの座右の銘や最近読んだ本からお気に入りのフレーズを教えてください。1フレーズ50文字以内で入力してください。</p>
                         <%= f.text_area(:phrase, placeholder: "Phrase?") %>
                         <p class="post-description">言語を選んでください。数式やコードなどはその他を選択してください。</p>
-                        <%= f.select(:language, [["日本語", 0], ["英語", 1], ["その他", 2]]) %>
+                        <%= f.select(:language, [["日本語", "ja"], ["英語", "en"], ["フランス語", "fr"], ["イタリア語", "it"], ["中国語", "zh"], ["その他", "other"]]) %>
                         <ul class="list-inline pull-right">
+                            <li><%= link_to("今は投稿しない", shares_path, class: "btn btn-default") %></li>
                             <li><button type="button" class="btn btn-primary next-step">次へ</button></li>
                         </ul>
                     </div>
@@ -90,7 +91,7 @@
                                     </div>
                                     <div class="modal-body source-field">
                                         <%= f.label(:category, "ジャンル") %><br />
-                                        <%= f.select(:category, [["本", 0], ["映画", 1], ["音楽", 2], ["インターネット", 3], ["その他", 4]]) %><br />
+                                        <%= f.select(:category, [["本", "book"], ["映画", "movie"], ["音楽", "music"], ["インターネット", "web"], ["古典", "classic"], ["その他", "other"]]) %><br />
 
                                         <%= f.label(:author, "著者") %>
                                         <%= f.text_field(:author) %>
@@ -100,7 +101,6 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                                        <button type="button" class="btn btn-primary">決定</button>
                                     </div>
                                 </div>
                             </div>

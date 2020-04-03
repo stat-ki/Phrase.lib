@@ -18,7 +18,7 @@
                                 </li>
                                 <li>
                                     <div class="is_original-button">
-                                    <%= f.check_box(:is_original, id: "is_original") %>
+                                    <%= f.check_box(:is_original, id: "is_original", disabled: true) %>
                                         <label for="is_original">
                                         <span></span>
                                         </label>
@@ -50,7 +50,7 @@
                 <%= form_with(model: @source, url: source_path(@source.id), method: :patch, local: true) do |f| %>
                     <div class="modal-body source-field">
                         <%= f.label(:category, "ジャンル") %><br />
-                        <%= f.select(:category, [["本", 0], ["映画", 1], ["音楽", 2], ["インターネット", 3], ["その他", 4]]) %><br />
+                        <%= f.select(:category, [["本", "book"], ["映画", "movie"], ["音楽", "music"], ["インターネット", "web"], ["古典", "classic"], ["その他", "other"]]) %><br />
 
                         <%= f.label(:author, "作者") %>
                         <%= f.text_field(:author) %>
