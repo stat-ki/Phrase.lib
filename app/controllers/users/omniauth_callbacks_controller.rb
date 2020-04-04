@@ -46,5 +46,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to controller: 'sessions', action: 'new'
     end
   end
-
 end

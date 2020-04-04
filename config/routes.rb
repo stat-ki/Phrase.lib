@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   # home_controller
   root "home#top"
 
   # devise_controller
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks',
   }
   # users_controller
   resources :users, only: [:show]
@@ -32,5 +31,4 @@ Rails.application.routes.draw do
 
   # gem 'shortener'
   get '/:id' => "shortener/shortened_urls#show"
-
 end
