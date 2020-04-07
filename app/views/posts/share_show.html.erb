@@ -20,7 +20,7 @@
                         <h1 class="text-center"><%= @post.phrase %></h1>
                         <div id="translated-phrase" class="text-center"></div>
                         <% if(@post.is_original) %>
-                            <h4>Original</h4>
+                            <h4 class="pull-right">Original</h4>
                         <% else %>
                             <h4 class="pull-right"><%= "#{@source.title}, #{@source.author}" %></h4>
                         <% end %>
@@ -30,8 +30,8 @@
                 <div id="favorite-btn-<%= @post.id %>">
                     <%= render("/favorites/form", post: @post) %>
                 </div>
-                <%# When the language isn't japanese %>
-                <% if(@post.language != 0) %>
+                <%# When the language isn't japanese or language which cant't be identified %>
+                <% unless(@post.language == ("ja" || "other")) %>
                     <%= link_to("翻訳する", "/posts/#{@post.id}/translate", class: "pull-right", remote: true) %>
                 <% end %>
             </div>
