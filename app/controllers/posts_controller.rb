@@ -85,7 +85,7 @@ class PostsController < ApplicationController
   end
 
   def shares
-    @posts = Post.where(is_sharing: true).order("created_at DESC")
+    @posts = Post.includes(:user).where(is_sharing: true).order("created_at DESC")
   end
 
   def first_post
@@ -93,7 +93,7 @@ class PostsController < ApplicationController
 
   def translate
     post = Post.find(params[:id])
-    # Create and encode URI parameter query.
+    # Create and encode URI query parameter.
     params = URI.encode_www_form(text: "\"#{post.phrase}\"", source: post.language, target: "ja")
     # Parse URI to be enable to get host and port.
     uri = URI.parse(ENV["TRANSLATE_API_KEY"] + "?" + params)
