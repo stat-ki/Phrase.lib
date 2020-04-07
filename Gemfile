@@ -50,6 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use rubocop-airbnb to improve readability
   gem 'rubocop-airbnb'
+  gem 'bullet'
 end
 
 group :test do
