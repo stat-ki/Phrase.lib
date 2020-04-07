@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only[:create, :destroy]
 
   def index
     @user = User.find(params[:id])
@@ -22,19 +22,19 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
+    post = Post.find(params[:post_id])
     favorite = Favorite.new(
       user_id: current_user.id,
-      post_id: @post.id
+      post_id: post.id
     )
     favorite.save
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
+    post = Post.find(params[:post_id])
     favorite = Favorite.find_by(
       user_id: current_user.id,
-      post_id: @post.id
+      post_id: post.id
     )
     favorite.destroy
   end
