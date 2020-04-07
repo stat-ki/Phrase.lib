@@ -39,7 +39,7 @@ class PostsController < ApplicationController
         title: params[:title],
         user_id: current_user.id
       )
-      unless source.valid?
+      if source.invalid?
         flash[:notice] = "出典に項目の不備があります"
         redirect_back(fallback_location: root_path)
       end
@@ -58,6 +58,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     unless @post.is_original
+      # When the post has source (not original), define source to enable to be edited.
       @source = Source.find(@post.source_id)
     end
   end
@@ -93,7 +94,7 @@ class PostsController < ApplicationController
 
   def translate
     post = Post.find(params[:id])
-    # Create and encode URI query parameter.
+    # Create and encode URI parameter query.
     params = URI.encode_www_form(text: "\"#{post.phrase}\"", source: post.language, target: "ja")
     # Parse URI to be enable to get host and port.
     uri = URI.parse(ENV["TRANSLATE_API_KEY"] + "?" + params)
