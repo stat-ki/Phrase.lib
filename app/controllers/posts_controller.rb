@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       )
       if source.invalid?
         flash[:notice] = "出典に項目の不備があります"
-        redirect_back(fallback_location: root_path)
+        return redirect_back(fallback_location: root_path)
       end
       post.source_id = source.id
     end
