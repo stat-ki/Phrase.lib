@@ -1,69 +1,65 @@
 <h2 class="text-center">編集する</h2>
-
 <div class="row">
-    <div class="col-xs-3"></div>
-        <div class="col-xs-6 center-block">
-            <%= form_with(model: @post, url: post_path(@post.id), method: :patch, local: true) do |f| %>
-                <div class="widget-area no-padding blank">
-                    <div class="status-upload">
-                            <%= f.text_area(:phrase) %>
-                            <ul>
-                                <li>
-                                    <div class="is_sharing-button">
-                                    <%= f.check_box(:is_sharing, id: "is_sharing") %>
-                                        <label for="is_sharing">
-                                        <span></span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="is_original-button">
-                                    <%= f.check_box(:is_original, id: "is_original", disabled: true) %>
-                                        <label for="is_original">
-                                        <span></span>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                            <%= f.submit("変更する", class: "btn btn-info green pull-right") %>
-                            <% unless(@post.is_original) %>
-                                <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#source-modal">出典を編集する</button>
-                            <% end %>
-                    </div>
-                </div>
-                <p class="post-description">説明やメモ、URLを入力してください。この項目はnotesとして投稿された時のみ見ることができます。</p>
-                <%= f.text_area(:detail) %>
-            <% end %>
+  <div class="col-xs-3"></div>
+    <div class="col-xs-6 center-block">
+      <%= form_with(model: @post, url: post_path(@post.id), method: :patch, local: true) do |f| %>
+        <div class="widget-area no-padding blank">
+          <div class="status-upload">
+            <%= f.text_area(:phrase) %>
+              <ul>
+                <li>
+                  <div class="is_sharing-button">
+                    <%= f.check_box(:is_sharing, id: "is_sharing") %>
+                      <label for="is_sharing">
+                        <span></span>
+                      </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="is_original-button">
+                    <%= f.check_box(:is_original, id: "is_original", disabled: true) %>
+                      <label for="is_original">
+                        <span></span>
+                      </label>
+                  </div>
+                </li>
+              </ul>
+              <%= f.submit("変更する", class: "btn btn-info green pull-right") %>
+                <% unless(@post.is_original) %>
+                  <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#source-modal">出典を編集する</button>
+                <% end %>
+          </div>
         </div>
+        <p class="post-description">説明やメモ、URLを入力してください。この項目はnotesとして投稿された時のみ見ることができます。</p>
+        <%= f.text_area(:detail) %>
+      <% end %>
     </div>
+  </div>
 </div>
-
 <%# Modal %>
 <% unless(@post.is_original) %>
-    <div class="modal fade" id="source-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                    <h4 class="modal-title">出典元について教えてください</h4>
-                </div>
-                <%= form_with(model: @source, url: source_path(@source.id), method: :patch, local: true) do |f| %>
-                    <div class="modal-body source-field">
-                        <%= f.label(:category, "ジャンル") %><br />
-                        <%= f.select(:category, [["本", "book"], ["映画", "movie"], ["音楽", "music"], ["インターネット", "web"], ["古典", "classic"], ["その他", "other"]]) %><br />
-
-                        <%= f.label(:author, "作者") %>
-                        <%= f.text_field(:author) %>
-
-                        <%= f.label(:title, "タイトル") %>
-                        <%= f.text_field(:title) %>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                        <%= f.submit("変更する", class: "btn btn-info pull-right") %>
-                    </div>
-                <% end %>
-            </div>
+  <div class="modal fade" id="source-modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+            <h4 class="modal-title">出典元について教えてください</h4>
         </div>
+        <%= form_with(model: @source, url: source_path(@source.id), method: :patch, local: true) do |f| %>
+          <div class="modal-body source-field">
+            <%= f.label(:category, "ジャンル") %><br />
+            <%= f.select(:category, [["本", "book"], ["映画", "movie"], ["音楽", "music"], ["インターネット", "web"], ["古典", "classic"], ["その他", "other"]]) %><br />
+            <%= f.label(:author, "作者") %>
+            <%= f.text_field(:author) %>
+            <%= f.label(:title, "タイトル") %>
+            <%= f.text_field(:title) %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+              <%= f.submit("変更する", class: "btn btn-info pull-right") %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 <% end %>

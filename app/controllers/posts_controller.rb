@@ -92,7 +92,6 @@ class PostsController < ApplicationController
     params = URI.encode_www_form(text: "\"#{post.phrase}\"", source: post.language, target: "ja")
     # Parse URI to be enable to get host and port.
     uri = URI.parse(ENV["TRANSLATE_API_KEY"] + "?" + params)
-
     begin
       response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.open_timeout = 5
