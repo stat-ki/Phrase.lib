@@ -1,27 +1,26 @@
 <div class="row">
-    <%= render("/layouts/sharemode_sidebar") %>
-
-    <div class="col-xs-10">
-        <h2>検索結果</h2>
-        <% if(@users.present?) %>
-            <div class="row">
-                <% @users.each do |user| %>
-                    <div class="col-xs-3">
-                        <%= link_to(user_path(user.id)) do %>
-                            <div class="panel panel-info ">
-                                <div class="panel-heading">
-                                    <%= attachment_image_tag(user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive center-block") %>
-                                </div>
-                                <div class="panel-body">
-                                    <%= user.name %>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
-                <% end %>
-            </div>
-        <% else %>
-            <h3>検索結果がありません。</h3>
+  <%= render("/layouts/sharemode_sidebar") %>
+  <div class="col-xs-10">
+    <h2>検索結果</h2>
+    <% if(@users.present?) %>
+      <div class="row">
+        <% @users.each do |user| %>
+          <div class="col-xs-3">
+            <%= link_to(user_path(user.id)) do %>
+              <div class="panel panel-info ">
+                <div class="panel-heading">
+                  <%= attachment_image_tag(user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive center-block") %>
+                </div>
+                <div class="panel-body">
+                  <%= user.name %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-    </div>
+      </div>
+    <% else %>
+    <h3>検索結果がありません。</h3>
+    <% end %>
+  </div>
 </div>

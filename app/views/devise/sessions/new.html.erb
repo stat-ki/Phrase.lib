@@ -1,7 +1,6 @@
 <div class="row">
   <h2 class="text-center">ログイン</h2>
 </div>
-
 <div class="row text-center">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,12 +8,10 @@
       <%= f.label :email, "メールアドレス", class: "col-xs-3" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-xs-6" %>
     </div>
-
     <div class="col-xs-12 devise-form">
       <%= f.label :password, "パスワード", class: "col-xs-3" %>
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "最低６文字必要です", class: "col-xs-6" %>
     </div>
-
     <div class="col-xs-12 devise-form">
       <%= f.submit "ログイン", class: "btn btn-success" %>
     </div>

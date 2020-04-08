@@ -24,7 +24,7 @@
 .wizard .btn {
     margin-top: 2vh;
 }
-/* Bootstrap thems
+/* Bootstrap theme(https://bootsnipp.com/snippets/P33ml)
 -------------------------------------------------- */
 .widget-area.blank {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -287,73 +287,75 @@ span.round-tab:hover {
 /* Bootstrap thems
 -------------------------------------------------- */
 
-/* === ボタンを表示するエリア ============================== */
+/* HTML parts(https://webparts.cman.jp/button/onoff/)
+-------------------------------------------------- */
 .is_sharing-button, .is_original-button {
-    margin         : auto;                /* 中央寄せ           */
-    width          : 10vh;                /* ボタンの横幅       */
+    margin: auto;
+    width: 10vh;
 }
 
-/* === チェックボックス ==================================== */
 .is_sharing-button input[type="checkbox"], .is_original-button input[type="checkbox"] {
-    display        : none;            /* チェックボックス非表示 */
+    display: none;
 }
 
-/* === チェックボックスのラベル（標準） ==================== */
 .is_sharing-button label {
-    display        : block;               /* ボックス要素に変更 */
-    box-sizing     : border-box;          /* 枠線を含んだサイズ */
-    text-align     : center;              /* 文字位置は中央     */
-    border         : 2px solid #ccc;      /* 枠線(一旦四方向)   */
-    border-radius  : 3px;                 /* 角丸               */
-    height         : 60px;                /* ボタンの高さ       */
-    font-size      : 18px;                /* 文字サイズ         */
-    line-height    : 60px;                /* 太字               */
-    font-weight    : bold;                /* 太字               */
-    background     : #9fc24d;                /* 背景色             */
-    box-shadow     : 3px 3px 6px #888;    /* 影付け             */
-    transition     : .3s;                 /* ゆっくり変化       */
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    height: 60px;
+    font-size: 18px;
+    line-height: 60px;
+    font-weight: bold;
+    background: #9fc24d;
+    box-shadow: 3px 3px 6px #888;
+    transition: .3s;
 }
 
-/* === ON側のチェックボックスのラベル（ONのとき） ========== */
 .is_sharing-button label span:after{
-    content        : "note";               /* 表示する文字       */
-    color          : #fff;
+    content: "note";
+    color: #fff;
 }
+
 .is_sharing-button #is_sharing:checked + label {
-    background     : #e9bc00;             /* 背景色             */
-    box-shadow     : none;                /* 影を消す           */
+    background: #e9bc00;
+    box-shadow: none;
 }
+
 .is_sharing-button #is_sharing:checked + label span:after {
-    content        : "share";                /* 表示する文字       */
-    color          : #fff;                /* 文字色             */
+    content: "share";
+    color: #fff;
 }
 
-/* === チェックボックスのラベル（標準） ==================== */
 .is_original-button label {
-    display        : block;               /* ボックス要素に変更 */
-    box-sizing     : border-box;          /* 枠線を含んだサイズ */
-    text-align     : center;              /* 文字位置は中央     */
-    border         : 2px solid #ccc;      /* 枠線(一旦四方向)   */
-    border-radius  : 3px;                 /* 角丸               */
-    height         : 60px;                /* ボタンの高さ       */
-    font-size      : 18px;                /* 文字サイズ         */
-    line-height    : 60px;                /* 太字               */
-    font-weight    : bold;                /* 太字               */
-    background     : #ffcccc;                /* 背景色             */
-    box-shadow     : 3px 3px 6px #888;    /* 影付け             */
-    transition     : .3s;                 /* ゆっくり変化       */
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    height: 60px;
+    font-size: 18px;
+    line-height: 60px;
+    font-weight: bold;
+    background: #ffcccc;
+    box-shadow: 3px 3px 6px #888;
+    transition: .3s;
 }
 
-/* === ON側のチェックボックスのラベル（ONのとき） ========== */
 .is_original-button label span:after{
-    content        : "Quoted";               /* 表示する文字       */
-    color          : #fff;
+    content: "Quoted";
+    color: #fff;
 }
+
 .is_original-button #is_original:checked + label {
-    background     : #ff9494;             /* 背景色             */
-    box-shadow     : none;                /* 影を消す           */
+    background: #ff9494;
+    box-shadow: none;
 }
+
 .is_original-button #is_original:checked + label span:after {
-    content        : "Original";                /* 表示する文字       */
-    color          : #fff;                /* 文字色             */
+    content: "Original";
+    color: #fff;
 }
+/* HTML parts
+-------------------------------------------------- */
