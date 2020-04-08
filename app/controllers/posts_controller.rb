@@ -20,38 +20,30 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
+    @source = Source.new
   end
 
   def create
-    post = Post.new(
-      user_id: current_user.id,
-      phrase: params[:phrase],
-      language: params[:language],
-      detail: params[:detail],
-      is_original: params[:is_original],
-      is_sharing: params[:is_sharing]
-    )
-    unless post.is_original
+    @post = Post.new(posts_params)
+    @post.user_id = current_user.id
+    unless @post.is_original
+      params[:post][:source][:user_id] = current_user.id
       # When no records matched, create as new record.
-      source = Source.find_or_create_by(
-        category: params[:category],
-        author: params[:author],
-        title: params[:title],
-        user_id: current_user.id
-      )
-      if source.invalid?
+      @source = Source.find_or_create_by(sources_params)
+      if @source.invalid?
         flash[:notice] = "出典に項目の不備があります"
-        return redirect_back(fallback_location: root_path)
+        return render("/posts/new")
       end
-      post.source_id = source.id
+      @post.source_id = @source.id
     end
-    if post.valid?
-      post.save
+    if @post.valid?
+      @post.save
       flash[:notice] = "投稿しました"
-      redirect_to(post_path(post.id))
+      redirect_to(post_path(@post.id))
     else
       flash[:notice] = "未入力の項目か入力内容に不備があります"
-      redirect_back(fallback_location: root_path)
+      return render("/posts/new")
     end
   end
 
@@ -90,6 +82,8 @@ class PostsController < ApplicationController
   end
 
   def first_post
+    @post = Post.new
+    @source = Source.new
   end
 
   def translate
@@ -127,11 +121,15 @@ class PostsController < ApplicationController
     params.require(:post).permit(:phrase, :language, :details, :is_original, :is_sharing)
   end
 
+  def sources_params
+    params.require(:post).require(:source).permit(:category, :author, :title, :user_id)
+  end
+
   def ensure_correct_user
     post = Post.find(params[:id])
     if current_user != post.user
       flash[:notice] = "権限がありません"
-      redirect_to(user_path)
+      redirect_to(user_path(current_user.id))
     end
   end
 end

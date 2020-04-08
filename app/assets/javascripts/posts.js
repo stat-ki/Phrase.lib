@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#is_original_false').on("click", function(){
+    $('#post_is_original_false').on("click", function(){
         $("#source-modal").modal();
     });
     $('#is_sharing_false').on("click", function(){
