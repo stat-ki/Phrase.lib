@@ -1,0 +1,50 @@
+<div class="col-xs-2">
+  <div class="sidebar">
+    <% if(user_signed_in?) %>
+      <%= attachment_image_tag(current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "img-responsive center-block sidebar_image") %>
+      <div class="sidebar-name text-center">
+        <%= link_to(current_user.name, user_path(current_user.id)) %>
+      </div>
+      <div class="sidebar-button">
+        <%= link_to("notes モードに切り替える", notes_path, class: "btn btn-success mode-btn center-block") %>
+      </div>
+      <div class="sidebar-menu">
+        <ul class="nav">
+          <li>
+            <%= link_to(user_path(current_user)) do %>
+              <span class="fas fa-id-card"> マイページ</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(new_post_path) do %>
+              <span class="fas fa-pen-alt"> 投稿する</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to("/users/#{current_user.id}/favorite") do %>
+              <span class="fas fa-bookmark"> いいね！を見る</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(edit_user_registration_path) do %>
+              <span class="fas fa-wrench"> ユーザー情報を編集する</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <%= image_tag('no_image.jpg', size: "50x50", class: "img-responsive center-block sidebar_image") %>
+      <h4 class="sidebar-name text-center">Guest_User</h4>
+    <% end %>
+    <%= render("/search/form") %>
+  </div>
+</div>
+
+<style>
+    header {
+        background-color: #665200;
+    }
+    .sidebar {
+        background-color: #e9bc00;
+    }
+</style>

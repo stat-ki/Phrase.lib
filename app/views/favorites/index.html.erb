@@ -1,0 +1,15 @@
+<div class="row">
+  <%= render("/layouts/sharemode_sidebar") %>
+  <div class="col-xs-10">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3><%= @user.name %>さんがいいね！をした投稿</h3>
+      </div>
+    </div>
+    <% if(@posts.present?) %>
+      <%= render("/posts/shares_index", posts: @posts) %>
+    <% else %>
+      <h4><%= @user.name %>さんはまだいいね！をしていないようです。</h4>
+    <% end %>
+  </div>
+</div>

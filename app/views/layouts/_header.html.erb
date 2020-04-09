@@ -1,0 +1,40 @@
+<header class="nav navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-left">
+      <% if(user_signed_in?) %>
+        <%= link_to(shares_path) do %>
+          <%= image_tag('logo.png') %>
+        <% end %>
+      <% else %>
+        <%= link_to(root_path) do %>
+          <%= image_tag('logo.png') %>
+        <% end %>
+      <% end %>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if(user_signed_in?) %>
+          <li>
+            <%= link_to(destroy_user_session_path, method: :delete) do %>
+              <span class="fas fa-sign-out-alt">　ログアウト</span>
+              <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to(root_path(anchor: "about-row")) do %>
+              <span class="fas fa-question">　Phrase.libについて</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to('javascript:void(0);', onclick: "openLoginModal();") do %>
+              <span class="fas fa-sign-in-alt">　ログイン</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to('javascript:void(0);', onclick: "openRegisterModal();") do %>
+              <span class="fas fa-user-plus">　会員登録はこちら</span>
+            <% end %>
+          </li>
+        <% end %>
+  </div>
+</header>
+<%= render("/layouts/login_register_modal") %>

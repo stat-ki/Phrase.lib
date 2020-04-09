@@ -1,0 +1,150 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+header {
+    background-color: black;
+    opacity: 0.8;
+}
+
+#notice {
+    text-align: center;
+    background-color: #ffff93;
+    color: black;
+    margin: 0;
+}
+
+.body{
+	margin-top: 50px;
+}
+
+.profile_image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.image-preview {
+    height: 350px;
+    width: 350px;
+}
+
+.sidebar {
+    height: 80vh;
+    margin-top: 10px;
+    position: fixed;
+    min-width: 15vw;
+    border-radius: 10px;
+}
+
+.sidebar_image {
+    width: 100px;
+    height: 100px;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+}
+
+.sidebar-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+
+.profile-usermenu {
+    margin-top: 5vh;
+}
+
+.sidebar-menu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
+
+.sidebar-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.form-group {
+    margin-top: 5vh;
+    height: 20vh;
+}
+
+.mode-btn {
+    width: 100%;
+    margin-bottom: 5vh;
+}
+
+.btn-twitter {
+    color: white;
+    background-color: #00acee;
+}
+
+.btn-twitter:hover {
+    color: white;
+    background-color: #0093ce;
+}
+
+.btn-google {
+    color: white;
+    background-color: #F74933;
+}
+
+.btn-google:hover {
+    color: white;
+    background-color: #d6422f;
+}
+
+.btn-rakuten {
+    color: black;
+    background-color: #bf0000;
+}
+
+.btn-rakuten:hover {
+    color: black;
+    background-color: #af0000;
+}
+
+.btn-amazon {
+    color: black;
+    background-color: #FF9900;
+}
+
+.btn-amazon:hover {
+    color: black;
+    background-color: rgb(230, 138, 1);
+}
+
+.devise-form {
+    margin-bottom: 2vh;
+}
+
+.phrase-area {
+    text-decoration: none;
+    color: black;
+}
+
+.phrase-area:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.phrase-area h1 {
+    font-family: Didot;
+}
+
+.phrase-area h4 {
+    font-family: Avenir Next Regular;
+    font-style: oblique;
+}

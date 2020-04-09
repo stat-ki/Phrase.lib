@@ -1,0 +1,71 @@
+<div class="row">
+  <%= render("/layouts/sharemode_sidebar") %>
+    <div class="col-xs-10">
+      <div class="panel panel-warning  clearfix">
+        <div class="panel-heading">
+          <%= link_to(user_path(@post.user)) do %>
+            <%= attachment_image_tag(@post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "30x30", class: "img-responsive　pull-left") %>
+            <%= @post.user.name %>
+          <% end %>
+          <% if(@post.user == current_user) %>
+            <div class="pull-right post-config-field">
+              <%= link_to("", edit_post_path(@post.id), class: "fas fa-edit") %>
+              <%= link_to("", post_path(@post.id), method: :delete, class:"fas fa-trash", data: {confirm: "削除された投稿は元に戻すことができません。本当に削除してよろしいですか？"}, title:"Delete post?") %>
+            </div>
+          <% end %>
+        </div>
+        <div class="panel-body">
+          <div class="phrase-area">
+            <h1 class="text-center"><%= @post.phrase %></h1>
+            <div id="translated-phrase" class="text-center"></div>
+            <% if(@post.is_original) %>
+              <h4 class="pull-right">Original</h4>
+            <% else %>
+              <h4 class="pull-right"><%= "#{@source.title}, #{@source.author}" %></h4>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-footer clearfix">
+          <div id="favorite-btn-<%= @post.id %>">
+            <%= render("/favorites/form", post: @post) %>
+          </div>
+          <%# When the language isn't japanese or language which cant't be identified %>
+            <% unless(@post.language == ("ja" || "other")) %>
+              <%= link_to("翻訳する", "/posts/#{@post.id}/translate", class: "pull-right", remote: true) %>
+            <% end %>
+          </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row clearfix">
+          <div class="pull-right">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#uri-modal">
+              <span class="fas fa-share-square">　共有する</span>
+            </button>
+            <%= link_to("https://twitter.com/intent/tweet?text=#{@post.phrase} #{short_url(request.url)}", target: :_blank) do %>
+            <div class="btn btn-twitter">
+              <span class="fab fa-twitter"> Tweet</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= render("/sources/detail", post: @post, source: @source) %>
+  </div>
+</div>
+<%# Modal %>
+<div class="modal fade" id="uri-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+	    <p>以下のURLを貼り付けて共有してください。</p>
+	  </div>
+	  <div class="modal-body">
+        <%= short_url(request.url) %>
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+	  </div>
+	</div>
+  </div>
+</div>

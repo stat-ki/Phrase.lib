@@ -1,0 +1,13 @@
+<div class="row">
+  <%= render("/layouts/sharemode_sidebar") %>
+  <div class="col-xs-10">
+    <%= attachment_image_tag(@user, :profile_image, :fill, 350, 350, fallback: "no_image.jpg", size: "350x350", class: "img-responsive center-block") %>
+    <div class="text-center">
+      <h1><%= @user.name %></h1>
+      <%= link_to("/users/#{@user.id}/favorite") do %>
+        <span class="fas fa-bookmark"> いいね！を見る</span>
+      <% end %>
+    </div>
+    <%= render("/posts/shares_index", posts: @posts) %>
+  </div>
+</div>

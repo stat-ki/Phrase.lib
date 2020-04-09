@@ -1,0 +1,11 @@
+<% if(user_signed_in?) %>
+  <% if post.favorited_by?(current_user) %>
+    <%= link_to("/posts/#{post.id}/favorite", method: :delete, remote: true) do %>
+      <span class="fas fa-thumbs-up"></span><%= post.favorites.count%>
+    <% end %>
+  <% else %>
+    <%= link_to("/posts/#{post.id}/favorite", method: :post, remote: true) do %>
+      <span class="far fa-thumbs-up"></span><%= post.favorites.count %>
+    <% end %>
+  <% end %>
+<% end %>

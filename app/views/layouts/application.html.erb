@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Phraselib</title>
+    <title>Phrase.lib</title>
+    <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# FontAwesome CDN Link %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   </head>
-
   <body>
-    <%= yield %>
+    <%= render("layouts/header") %>
+    <div class="body">
+      <p id="notice"><%= flash[:notice] %></p>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

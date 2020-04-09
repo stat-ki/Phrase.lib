@@ -48,15 +48,64 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Use rubocop-airbnb to improve readability
+  gem 'rubocop-airbnb'
+  gem 'bullet'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Origin
+
+# Use refile to handle images
+gem 'refile', require: "refile/rails", github: 'manfe/refile'
+gem 'refile-mini_magick'
+gem 'refile-s3'
+
+# Use bootstrap to adapt grid design system
+gem 'bootstrap-sass'
+
+# bootstrap theme
+gem 'honoka-rails'
+gem 'data-confirm-modal'
+
+# Use jquery to handle JS
+gem 'jquery-rails'
+
+# Use devise to customize authenticate functions
+gem 'devise'
+
+# Use shortener to generate shorten URL
+gem 'shortener'
+
+# Use pry-byebug to debug
+gem 'pry-byebug'
+
+# Use dotenv-rails to handle environment variables
+gem 'dotenv-rails'
+
+# Use omniauth to implement SNS authentication
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+
+# Use rakuten_web_service to handle rakuten api
+gem 'rakuten_web_service'
+
+# Use rinku to autolink url
+gem 'rinku'

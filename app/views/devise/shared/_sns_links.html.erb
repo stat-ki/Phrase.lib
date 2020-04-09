@@ -1,0 +1,11 @@
+<%= link_to(omniauth_authorize_path(resource_name, :twitter)) do %>
+    <div class="btn btn-twitter">
+        <span class="fab fa-twitter"> Twitterアカウントでログイン</span>
+    </div>
+<% end %>
+
+<%= link_to(omniauth_authorize_path(resource_name, :google_oauth2)) do %>
+    <div class="btn btn-google">
+        <span class="fab fa-google"> Googleアカウントでログイン</span>
+    </div>
+<% end %>

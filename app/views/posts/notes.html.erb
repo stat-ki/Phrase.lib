@@ -1,0 +1,35 @@
+<div class="row">
+  <%= render("/layouts/notemode_sidebar") %>
+  <div class="col-xs-10">
+    <% @posts.each do |post| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="panel panel-success  clearfix">
+            <div class="panel-heading">
+              <% if(post.is_original) %>
+                <em>Original</em>
+              <% else %>
+                <% source = Source.find(post.source_id) %>
+                <em><%= "#{source.title}, #{source.author}" %></em>
+              <% end %>
+              <div class="pull-right post-config-field">
+                <%= link_to("", edit_post_path(post.id), class: "fas fa-edit") %>
+                <%= link_to("", post_path(post.id), method: :delete, class:"fas fa-trash", data: {confirm: "削除された投稿は元に戻すことができません。本当に削除してよろしいですか？"}, title:"Delete post?") %>
+              </div>
+            </div>
+            <%= link_to(post_path(post.id)) do%>
+              <div class="panel-body">
+                <div class="phrase-area">
+                  <h1 class="text-center"><%= post.phrase %></h1>
+                </div>
+              </div>
+            <% end %>
+            <div class="panel-footer">
+              <%= raw Rinku.auto_link(post.detail) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

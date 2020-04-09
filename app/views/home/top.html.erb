@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phrase.lib</title>
+    <%= favicon_link_tag('favicon.ico') %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# FontAwesome CDN Link %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  </head>
+  <body>
+    <%= render("layouts/header") %>
+    <div class="body">
+      <p id="notice"><%= flash[:notice] %></p>
+      <div class="container-fluid bg-slider">
+        <div class="row top-row">
+          <div class="col-xs-12">
+            <h1 class="top-title">Phrase.lib</h1>
+          </div>
+          <div class="col-xs-12">
+            <a class="btn big-login" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">ログイン</a>
+            or
+            <a class="btn big-login btn-danger" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">会員登録</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row about-row" id="about-row">
+          <h2 class="about-title">About Phrase.lib</h2>
+          <p>
+            Phrase.libは、あなたのお気に入りのフレーズを投稿するサイトです。<br />
+            本や映画、音楽を聞いて心に残ったフレーズをPhrase.libに投稿してください。<br />
+            shareモードとnoteモードの二つのモードを切り替えることができます。
+          </p>
+          <div class="col-xs-6">
+            <h3>Share mode</h3>
+            <p>
+              shareモードで投稿したフレーズは、他の人も見ることができます。<br />
+              自分の好きなフレーズや心に残ったフレーズを投稿して、他のユーザーと共有しましょう。
+            </p>
+            <%= image_tag('share.png', class: "introduction-image") %>
+          </div>
+          <div class="col-xs-6">
+            <h3>Note mode</h3>
+            <p>
+              noteモードで投稿したフレーズは、他の人は見ることができません。<br />
+              自分だけのメモとして、学習やアイデアの整理に役立てましょう。
+            </p>
+            <%= image_tag('note.png', class: "introduction-image") %>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row howto-row">
+          <h2 class="howto-title">How to use Phrase.lib</h2>
+          <div class="col-xs-4">
+            <%= image_tag('post.png', class: "howto-image") %>
+            <p class="howto-description">
+              投稿の共有・非共有は後からでも変更ができます。
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <%= image_tag('good.png', class: "howto-image") %>
+            <p class="howto-description">
+              他のユーザーの投稿が気にいったらいいね！をしましょう。<br />
+              自分がいいね！した投稿は後から見返すことができます。
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <%= image_tag('search.png', class: "howto-image") %>
+            <p class="howto-description">
+              出典が気になるフレーズがあったら検索をしてみましょう。<br />
+              詳細画面では、出典作品のリンクや作者を検索することができます。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row start-row">
+          <h2 class="start-title">Start Phrase.lib</h2>
+          <p class="start-description">
+              ログインしなくても他のユーザーの投稿を見ることができます。<br />
+              登録をしていただいた場合、全ての機能をご利用いただけます。
+          </p>
+          <div class="col-xs-6">
+            <%= link_to('javascript:void(0);', onclick: "openRegisterModal();", class: "start-link") do %>
+              <span>新規登録する</span>
+            <% end %>
+          </div>
+          <div class="col-xs-6">
+            <%= link_to(shares_path, class: "start-link") do %>
+              <span>投稿を見る</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
