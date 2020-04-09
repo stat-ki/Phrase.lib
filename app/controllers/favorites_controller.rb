@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!, only[:create, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
     @user = User.find(params[:id])
