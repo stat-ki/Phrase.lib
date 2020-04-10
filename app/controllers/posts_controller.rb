@@ -117,7 +117,7 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:post).permit(:phrase, :language, :details, :is_original, :is_sharing)
+    params.require(:post).permit(:phrase, :language, :detail, :is_original, :is_sharing)
   end
 
   def sources_params
