@@ -3,7 +3,7 @@ class SearchController < ApplicationController
     case params[:search_model]
     when "user_name"
       @users = User.where("name LIKE?", "%#{params[:search_word]}%")
-      render("/search/user_index")
+      return render("/search/user_index")
     when "phrase"
       @posts = Post.where("phrase LIKE?", "%#{params[:search_word]}%").where(is_sharing: true)
     when "source_title"
@@ -36,6 +36,9 @@ class SearchController < ApplicationController
     when "music"
       # CDs
       genreId = 101311
+    else
+      # All items
+      genreId = 0
     end
     @items = RakutenWebService::Ichiba::Item.search(keyword: source.title, genreId: genreId).first(5)
   end
