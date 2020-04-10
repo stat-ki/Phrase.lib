@@ -1,31 +1,48 @@
-# Phrase.lib（仮称）
+<div align="center">
+  <a href="https://phraselib.work">
+    <img src="https://user-images.githubusercontent.com/59187251/78864468-a28b7700-7a76-11ea-8d22-df9a2dc119c4.png" width="200">
+  </a>
+</div>
 
-## サイト概要
-ワンフレーズに限定した文章投稿兼学習用メモサイト
+# About
+Phrase.libは、ワンフレーズのみの投稿アプリケーションです。<br />
+非ログイン時は閲覧のみ、ログイン後は、投稿、編集を行うことができます。<br />
+基本的なCRUD機能の他、外部APIと連携した会員登録機能、翻訳機能、投稿と関連づく商品検索等を実装しています。
 
-### サイトテーマ
-- SNSモードとメモモードの二つのモードを切り替えができるようなサイト
-    - SNSモード
-        - 映画や本などで印象に残ったフレーズ出典付きで投稿し、他のユーザーと共有するモード
-    - メモモード
-        - 学習中に自分にとってわかりやすかったフレーズを記録し、復習に役立てるモード
+# URL
+https://phraselib.work にアクセスしてください。
 
-### テーマを選んだ理由
-- 利用目的面
-    - SNS等で文章の一部のみを切り抜いて呟いているユーザーも多く、出典や前後の文脈がわかりにくいことがあるため、その辺りも共有しやすくなれば良いと感じたため。
-    - 概念の復習をするときに、自分にハマったフレーズのみを見れば、全体を思い出す時が多々あったため、効率的に学習できるように思ったため。
-- 技術面
-    - 基本的な機能については、時間をかけずに実装できるため、応用的な機能に多く時間をかけることができると判断したため。
-- 商用面
-    - サービスとして運用することを考えたときに、アフィリエイト等を適応しやすく、また、短縮urlを利用し他のSNSで共有しやすくしたり、個人のためのモードを作ったりすることで、サイト自体の利用者は少なくても利用するインセンティブを維持できるようにしたかったから。
+# Built with
+- Ruby v.2.5.7
+- Rails v.5.2.4.1
+- Gem
+  - <a href="https://docs.google.com/spreadsheets/d/1ZZj6fMFO6sZn-UmaIGmRy14gnBIFzHmhs0Nt3umSMZ8/edit?usp=sharing">Googleスプレッドシートにまとめています。</a>
+- GoogleAppsScript
+- DB: MySQL
+- OS: Linux
+- WEBサーバー: nginx
+- アプリケーションサーバー: puma
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/59187251/78864539-c484f980-7a76-11ea-9af1-14e3f2e37278.jpg">
+</div>
 
-### ターゲットユーザ
-TwitterなどのSNS利用者又は学生など 
+# Features
+- ユーザー関連
+  - メールアドレスを用いたユーザー登録
+  - Twitter、GoogleでのOAuth認証
+  - プロフィール画像の登録
+- 投稿関連
+  - CRUD機能
+  - 英語、中国語等の翻訳機能（非同期化）
+  - 公開範囲の設定
+  - いいね！機能（非同期化）
+  - 共有用の短縮URL生成
+- 検索関連
+  - ユーザー、投稿検索機能
+  - 楽天市場での関連商品検索（非同期化）
+- その他
+  - RSpec、Capybara、Factorybotを用いたテスト実施
 
-### 主な利用シーン
-SNS投稿時、学習
-
-## 設計書
-
-### 機能一覧
-https://docs.google.com/spreadsheets/d/1qbkSTwjBefvaDT2_Aw6C--9j33bxYrncGzIgMh16RJ0/edit?usp=sharing
+# Author
+[stat-ki](https://github.com/stat-ki)  
+mail to: per_ik at outlook.com
