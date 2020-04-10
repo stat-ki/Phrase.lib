@@ -2,10 +2,10 @@ $(document).ready(function () {
   $('#post_is_original_false').on("click", function(){
     $("#source-modal").modal();
   });
-  $('#is_sharing_false').on("click", function(){
+  $('#post_is_sharing_false').on("click", function(){
     $("#detail-field").fadeIn();
   });
-  $('#is_sharing_true').on("click", function(){
+  $('#post_is_sharing_true').on("click", function(){
     $("#detail-field").fadeOut();
   });
   $('[data-toggle="tooltip"]').tooltip();
