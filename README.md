@@ -43,6 +43,10 @@ https://phraselib.work にアクセスしてください。
 - その他
   - RSpec、Capybara、Factorybotを用いたテスト実施
 
+# Background
+製作経緯等をスライド形式で掲載しております。<br />
+<a href="https://drive.google.com/file/d/1_vRqxU3VpQRyvyB1xux-ZDm23wWQlCJ_/view?usp=sharing">Googleスライド</a>
+
 # Author
 [stat-ki](https://github.com/stat-ki)  
 mail to: per_ik at outlook.com
