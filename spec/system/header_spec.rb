@@ -20,10 +20,7 @@ RSpec.describe "header", type: :system do
     context "when user is singed in" do
       before do
         @user = create(:user)
-        visit root_path
-        fill_in "user_email", with: @user.email
-        fill_in "user_password", with: @user.password
-        click_button "ログイン"
+        login(@user)
       end
 
       it "includes link to sign out" do
