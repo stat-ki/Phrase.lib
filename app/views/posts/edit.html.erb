@@ -9,7 +9,7 @@
               <ul>
                 <li>
                   <div class="is_sharing-button">
-                    <%= f.check_box(:is_sharing, id: "is_sharing") %>
+                    <%= f.check_box(:is_sharing, {id: "is_sharing"}, true, false) %>
                       <label for="is_sharing">
                         <span></span>
                       </label>
@@ -17,7 +17,7 @@
                 </li>
                 <li>
                   <div class="is_original-button">
-                    <%= f.check_box(:is_original, id: "is_original", disabled: true) %>
+                    <%= f.check_box(:is_original, {id: "is_original", disabled: true}, true, false) %>
                       <label for="is_original">
                         <span></span>
                       </label>

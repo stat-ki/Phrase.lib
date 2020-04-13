@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy, :notes]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :protect_note, only: [:show]
 
   def show
     @post = Post.find(params[:id])
@@ -10,8 +11,6 @@ class PostsController < ApplicationController
     if @post.is_sharing
       render("/posts/share_show")
     else
-      # When the post is not for share, only user posted this can access.
-      ensure_correct_user
       render("/posts/note_show")
     end
   rescue ActiveRecord::RecordNotFound
@@ -57,6 +56,9 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
+    if params[:post][:is_sharing].nil?
+      params[:post][:is_sharing] = false
+    end
     if post.update(posts_params)
       flash[:notice] = "投稿を更新しました"
       redirect_to(post_path(post.id))
@@ -129,6 +131,17 @@ class PostsController < ApplicationController
     if current_user != post.user
       flash[:notice] = "権限がありません"
       redirect_to(user_path(current_user.id))
+    end
+  end
+
+  def protect_note
+    # When the post is not for share, only user posted this can access.
+    post = Post.find(params[:id])
+    if post.is_sharing = false
+      if !user_signed_in? || current_user != post.user
+        flash[:notice] = "権限がありません"
+        redirect_to(root_path)
+      end
     end
   end
 end
