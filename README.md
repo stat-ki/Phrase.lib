@@ -23,7 +23,7 @@ https://phraselib.work にアクセスしてください。
 - WEBサーバー: nginx
 - アプリケーションサーバー: puma
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/59187251/78864539-c484f980-7a76-11ea-9af1-14e3f2e37278.jpg">
+  <img src="https://user-images.githubusercontent.com/59187251/79635254-e2efa100-81aa-11ea-8e9b-2aa2c27a12eb.jpg">
 </div>
 
 # Features
