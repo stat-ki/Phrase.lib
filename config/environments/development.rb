@@ -68,4 +68,18 @@ Rails.application.configure do
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end  # Settings specified here will take precedence over those in config/application.rb.
+
+  # ActiveMailer settings
+  config.action_mailer.default_url_options = { host: 'localhost:3000'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: 'smtp.gmail.com',
+    port: '587',
+    domain: 'smtp.gmail.com',
+    authentication: 'plain',
+    user_name: 'phraselib.manager@gmail.com',
+    password: ENV['MAIL_PASSWORD']
+  }
 end
