@@ -48,7 +48,9 @@
       <div class="modal-footer">
         <div class="forgot login-footer">
           <span>アカウントを持っていませんか？
-            <a href="javascript: showRegisterForm();">新規登録</a>
+            <a href="javascript: showRegisterForm();">新規登録</a><br />
+            <span>パスワードをお忘れですか？</span>
+            <%= link_to("再設定する", new_user_password_path) %>
           </span>
         </div>
         <div class="forgot register-footer" style="display:none">
