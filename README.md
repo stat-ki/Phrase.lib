@@ -31,6 +31,7 @@ https://phraselib.work にアクセスしてください。
   - メールアドレスを用いたユーザー登録
   - Twitter、GoogleでのOAuth認証
   - プロフィール画像の登録
+  - パスワードリセットトークンのメール送信
 - 投稿関連
   - CRUD機能
   - 英語、中国語等の翻訳機能（非同期化）
@@ -41,6 +42,7 @@ https://phraselib.work にアクセスしてください。
   - ユーザー、投稿検索機能
   - 楽天市場での関連商品検索（非同期化）
 - その他
+  - 問い合わせ内容のメール送信、LINE通知
   - RSpec、Capybara、Factorybotを用いたテスト実施
 
 # Background
