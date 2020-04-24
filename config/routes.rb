@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   post "/search_result" => "search#search_result"
   get "/posts/:id/search_items" => "search#search_items"
 
+  #contact_controller
+  post "/contact" => "contact#create"
+
   # gem 'shortener'
   get '/:id' => "shortener/shortened_urls#show"
 end

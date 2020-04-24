@@ -96,6 +96,40 @@
           </div>
         </div>
       </div>
+      <div class="container-fluid">
+        <div class="row contact-row">
+          <h2 class="contact-title">Contact</h2>
+          <p class="contact-description">
+              サービスについてのご不明な点や製作者へのご連絡、不具合等ございましたら、<br />
+              以下よりご連絡ください。ご指定のメールアドレスへ返信いたします。
+          </p>
+          <div class="col-xs-12">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uri-modal">
+              <span class="fas fa-paper-plane">　お問い合わせフォーム</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# Modal %>
+    <div class="modal fade" id="uri-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+            <p>お問い合わせ内容を入力し、送信ボタンを押してください。</p>
+          </div>
+          <%= form_with(model: @contact, url: "/contact", method: :post, local: true) do |f| %>
+            <div class="modal-body clearfix">
+              <%= f.label(:email, "メールアドレス") %><br />
+              <%= f.email_field(:email, placeholder:"必須") %><br />
+              <%= f.label(:message, "内容") %><br />
+              <%= f.text_area(:message, plasceholder: "こちらにご入力ください") %>
+              <%= f.submit("送信する", class: "btn btn-success pull-right") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
