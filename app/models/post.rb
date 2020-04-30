@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites
 
+  validates :source_id, presence: true, unless: :is_original
   validates :phrase, presence: true, length: { maximum: 50 }
   validates :language, presence: true
   validates :is_original, inclusion: {in: [true, false]}
