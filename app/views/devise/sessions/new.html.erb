@@ -17,7 +17,9 @@
     </div>
   <% end %>
   <p>or</p>
-  <%= render("/devise/shared/sns_links") %><br />
-  <span>パスワードをお忘れですか？</span>
-  <%= link_to("再設定する", new_user_password_path) %>
+  <%= render("/devise/shared/sns_links") %>
+  <div>
+    <span>パスワードをお忘れですか？</span>
+    <%= link_to("再設定する", new_user_password_path) %>
+  </div>
 </div>
