@@ -1,4 +1,4 @@
-<header class="nav navbar-fixed-top">
+<header class="nav navbar-fixed-top share-header">
   <div class="container-fluid">
     <div class="nav navbar-nav navbar-left">
       <% if(user_signed_in?) %>
@@ -14,8 +14,8 @@
       <ul class="nav navbar-nav navbar-right">
         <% if(user_signed_in?) %>
           <li>
-            <%= link_to(shares_path) do %>
-              <span class="fas fa-comments"> share一覧へ</span>
+            <%= link_to(notes_path) do %>
+              <span class="fas fa-comments"> note一覧へ</span>
             <% end %>
           </li>
           <li>
@@ -40,6 +40,7 @@
             <% end %>
           </li>
         <% end %>
+      </ul>
   </div>
 </header>
 <%= render("/layouts/login_register_modal") %>

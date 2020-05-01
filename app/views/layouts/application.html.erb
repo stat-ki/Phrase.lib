@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   </head>
   <body>
-    <%= render("layouts/header") %>
+    <% if(current_page?(shares_path) || (@post.is_sharing if @post.present?)) %>
+      <%= render("layouts/sharemode_header") %>
+    <% elsif(current_page?(notes_path) || (!@post.is_sharing if @post.present?)) %>
+      <%= render("layouts/notemode_header") %>
+    <% else %>
+      <%= render("layouts/header") %>
+    <% end %>
     <div class="body">
       <p id="notice"><%= flash[:notice] %></p>
       <div class="container-fluid">

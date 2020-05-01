@@ -22,6 +22,14 @@ header {
     opacity: 0.8;
 }
 
+.share-header {
+    background-color: #665200;
+}
+
+.note-header {
+    background-color: #2a3314;
+}
+
 #notice {
     text-align: center;
     background-color: #ffff93;
@@ -49,6 +57,14 @@ header {
     position: fixed;
     min-width: 15vw;
     border-radius: 10px;
+}
+
+.share-sidebar {
+    background-color: #e9bc00;
+}
+
+.note-sidebar {
+    background-color: #9fc24d;
 }
 
 .sidebar_image {
