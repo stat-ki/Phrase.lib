@@ -1,0 +1,27 @@
+<header class="nav navbar-fixed-top note-header">
+  <div class="container-fluid">
+    <div class="nav navbar-nav navbar-left">
+      <% if(user_signed_in?) %>
+        <%= link_to(shares_path) do %>
+          <%= image_tag('logo.png') %>
+        <% end %>
+      <% else %>
+        <%= link_to(root_path) do %>
+          <%= image_tag('logo.png') %>
+        <% end %>
+      <% end %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to(shares_path) do %>
+          <span class="fas fa-comments"> share一覧へ</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to(destroy_user_session_path, method: :delete) do %>
+          <span class="fas fa-sign-out-alt">　ログアウト</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</header>

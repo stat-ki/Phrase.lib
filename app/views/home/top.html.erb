@@ -37,7 +37,7 @@
           <div class="col-xs-6">
             <h3>Share mode</h3>
             <p>
-              shareモードで投稿したフレーズは、他の人も見ることができます。<br />
+              shareモードで投稿したフレーズは、他の人も見ることができます。<>
               自分の好きなフレーズや心に残ったフレーズを投稿して、他のユーザーと共有しましょう。
             </p>
             <%= image_tag('share.png', class: "introduction-image") %>
@@ -85,8 +85,14 @@
               登録をしていただいた場合、全ての機能をご利用いただけます。
           </p>
           <div class="col-xs-6">
-            <%= link_to('javascript:void(0);', onclick: "openRegisterModal();", class: "start-link") do %>
-              <span>新規登録する</span>
+            <% if(user_signed_in?) %>
+              <%= link_to(user_path(current_user.id), class: "start-link") do %>
+                <span>マイページへ</span>
+              <% end %>
+            <% else %>
+              <%= link_to('javascript:void(0);', onclick: "openRegisterModal();", class: "start-link") do %>
+                <span>新規登録する</span>
+              <% end %>
             <% end %>
           </div>
           <div class="col-xs-6">
@@ -121,11 +127,11 @@
           </div>
           <%= form_with(model: @contact, url: "/contact", method: :post, local: true) do |f| %>
             <div class="modal-body clearfix">
-              <%= f.label(:email, "メールアドレス") %><br />
-              <%= f.email_field(:email, placeholder:"必須") %><br />
-              <%= f.label(:message, "内容") %><br />
-              <%= f.text_area(:message, plasceholder: "こちらにご入力ください") %>
-              <%= f.submit("送信する", class: "btn btn-success pull-right") %>
+              <div><%= f.label(:email, "メールアドレス") %></div>
+              <div><%= f.email_field(:email, placeholder:"必須") %></div>
+              <div><%= f.label(:message, "内容") %></div>
+              <div><%= f.text_area(:message, plasceholder: "こちらにご入力ください") %></div>
+              <div class="pull-right"><%= f.submit("送信する", class: "btn btn-success") %></div>
             </div>
           <% end %>
         </div>
