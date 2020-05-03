@@ -1,4 +1,7 @@
 class Source < ApplicationRecord
+  # User can edit only source records which is made by own.
+  # The products to be searched in Rakuten are changed according to the category.
+
   belongs_to :user
 
   validates :user_id, presence: true
