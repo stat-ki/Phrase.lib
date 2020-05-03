@@ -1,4 +1,8 @@
 class Post < ApplicationRecord
+  # The post which is_sharing false, only user posted can access.
+  # The post which is_original false must have source.
+  # Language code is based on ISO-639-1.
+
   belongs_to :user
   has_many :favorites
 
